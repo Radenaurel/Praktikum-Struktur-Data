@@ -319,8 +319,8 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/Raden.png)
-> Ss VS Code Soal Ungaided no 1
+> ![Screenshot bagian x](output/Ungaided1yagesya.png)
+> Ss VS Code Soal Unguided no 1
 
 
 Penjelasan Singkat:
@@ -385,7 +385,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/screenshot_soal2A.png)
+> ![Screenshot bagian x](output/Ungaided2yagesya.png)
 
 penjelasan singkat : 
 Program ini menggunakan Fungsi [sebutAngka] untuk memproses konversi angka. Di dalam fungsi tersebut, digunakan struktur if-else if bertingkat untuk menangani berbagai rentang angka diantaranya: satuan yaitu 0-10, belasan yaitu 11-19, puluhan yaitu 20-99, dan seratus (100). Teknik modulo (%) dan pembagian integer (/) digunakan untuk memecah bilangan puluhan menjadi bagian puluhan dan satuan, memungkinkan program menggabungkan kata-kata seperti "Tujuh Puluh" dan "Sembilan".
@@ -447,7 +447,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/screenshot_soal2A.png)
+> ![Screenshot bagian x](output/Ungaided3yagesya.png)
 
 penjelasan singkat : 
 Kode ini bertujuan untuk menghasilkan sebuah pola simetris di konsol. Program ini menggunakan perulangan while dengan tujuan untuk menciptakan pola dua bagian yaitu sebuah segitiga terbalik di bagian atas dan sebuah titik bintang di bagian bawah. Pola ini dimulai dengan perulangan while terluar (while (a >= 1)) yang mengendalikan setiap baris dari atas ke bawah. Di setiap baris, perulangan while pertama (while (b <= n - a)) mencetak spasi di awal untuk menciptakan efek rata kanan. Selanjutnya, perulangan while berikutnya mencetak angka: dari c ke 1 (sisi kiri pola) dan dari 1 ke d (sisi kanan pola). Tanda bintang (*) ditambahkan di tengah untuk memisahkan kedua sisi. Bagian terakhir dari kode, di luar perulangan utama, mencetak baris terpisah di bagian bawah yang terdiri dari sejumlah spasi dan sebuah bintang tunggal.
@@ -455,4 +455,14 @@ Kode ini bertujuan untuk menghasilkan sebuah pola simetris di konsol. Program in
 
 ## Referensi
 
-1. https://en.wikipedia.org/wiki/Data_structure (diakses blablabla)
+Lippman, S. B., Lajoie, J., & Moo, B. E. (2012). C++ Primer (5th ed.). Addison-Wesley Professional.
+
+Microsoft. (n.d.). struct (C++). Microsoft Learn. Retrieved September 26, 2025, from https://learn.microsoft.com/en-us/cpp/cpp/struct-cpp
+
+Stroustrup, B. (1994). The Design and Evolution of C++. Addison-Wesley Publishing Company.
+
+Stroustrup, B. (2013). The C++ Programming Language (4th ed.). Addison-Wesley Professional.
+
+The C++ Resources Network. (n.d.). C++ Tutorials. Retrieved September 26, 2025, from https://www.cplusplus.com/doc/tutorial/
+
+The C++ Standard Library. (n.d.). C++ reference. Retrieved September 26, 2025, from https://en.cppreference.com/w/cpp/

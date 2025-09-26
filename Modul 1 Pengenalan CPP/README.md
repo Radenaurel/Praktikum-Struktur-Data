@@ -284,57 +284,174 @@ Kode ini membuktikan pentingnya modularitas atau pembagian menjadi fungsi-fungsi
 
 ### Soal 1
 
-copy paste soal nomor 1 disini
+Buatlah program yang menerima input-an dua buah bilangan bertipe float, kemudian memberikan output-an hasil penjumlahan, pengurangan, perkalian, dan pembagian dari dua bilangan tersebut.
 
 ```go
-package main
+#include <iostream>
+#include <iomanip> 
+using namespace std;
 
-func main() {
-	fmt.Println("Kode kalian disini")
-	fmt.Println("JANGAN MASUKIN >>SCREENSHOT<< KODE KALIAN DISINI")
-	fmt.Println("KALAU ADA -20 POIN LAPRAK")
+int main() {
+    double bilangan1, bilangan2; 
+
+    cout << " === Kalkulator Desimal === " << endl;
+
+    cout << "Masukkan bilangan ke-1 : ";
+    cin >> bilangan1;
+    cout << "Masukkan bilangan ke-2 : ";
+    cin >> bilangan2;
+
+    cout << fixed << setprecision(2);
+
+    cout << "\n=== Hasil Operasi Bilangan Desimal ===" << endl;
+    cout << "Penjumlahan : " << bilangan1 + bilangan2 << endl;
+    cout << "Pengurangan : " << bilangan1 - bilangan2 << endl;
+    cout << "Perkalian   : " << bilangan1 * bilangan2 << endl;
+
+    if (bilangan2 != 0) {
+        cout << "Pembagian   : " << bilangan1 / bilangan2 << endl;
+    } else {
+        cout << "Pembagian   : Error! Pembagi tidak boleh nol." << endl;
+    }
+
+    return 0;
 }
 ```
 
 > Output
 > ![Screenshot bagian x](output/Raden.png)
-> %% Untuk mencantumkan screenshot, tidak boleh ada spasi di urlnya `()`, penamaan file bebas asal gak sara dan mudah dipahami aja,, dan jangan lupa hapus komen ini yah%%
+> Ss VS Code Soal Ungaided no 1
 
-Penjelasan ttg kode kalian disini
+
+Penjelasan Singkat:
+Program ini menggunakan tipe data double yang digunakan untuk bilangan desimal seperti float tapi lebih presisi untuk menerima dua input dari pengguna. Semua operasi aritmatika dilakukan dengan rumus operasi yang saya buat dan hasilnya dicetak langsung menggunakan cout. Ditambahkan pengecekan if untuk mencegah program error jika pengguna memasukkan angka nol sebagai pembagi. Penggunaan <iomanip> dan setprecision(2) digunakan agar output angka desimal terlihat rapi dan memiliki 2 angka dibelakang koma.
 
 ### Soal 2
 
-soal nomor 2A
+Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai angka tersebut dalam bentuk tulisan. Angka yang akan di-input-kan user adalah bilangan bulat positif mulai dari 0 s.d 100.
+
+Contoh: 79 : tujuh puluh Sembilan
 
 ```go
-package main
+#include <iostream>
+#include <string>
+using namespace std;
 
-func main() {
-	fmt.Println("kode untuk soal nomor 2A")
+string sebutAngka(int angka) {
+   
+    string satuan[] = {"Nol", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan"};
+    string hasil = "";
+
+    if (angka < 11) {
+        
+        hasil = satuan[angka];
+    } else if (angka < 20) {
+      
+        if (angka == 10) return "Sepuluh";
+        else if (angka == 11) return "Sebelas";
+        else return satuan[angka % 10] + " Belas";
+    } else if (angka <= 99) {
+        
+        int puluhan = angka / 10;
+        int sisa = angka % 10;
+
+        if (puluhan == 2) hasil += "Dua Puluh";
+        else if (puluhan == 7) hasil += "Tujuh Puluh"; 
+        else hasil += satuan[puluhan] + " Puluh";
+
+        if (sisa != 0) {
+            hasil += " " + satuan[sisa];
+        }
+    } else if (angka == 100) {
+        hasil = "Seratus";
+    }
+    return hasil;
+}
+
+int main() {
+    int inputAngka;
+
+    cout << "Masukkan angka (0-100): ";
+    cin >> inputAngka;
+
+    if (inputAngka < 0 || inputAngka > 100) {
+        cout << "Output: Angka di luar batas 0-100." << endl;
+    } else {
+        cout << "Output: " << inputAngka << " : " << sebutAngka(inputAngka) << endl;
+    }
+
+    return 0;
 }
 ```
 
 > Output
 > ![Screenshot bagian x](output/screenshot_soal2A.png)
 
-penjelasan kode
+penjelasan singkat : 
+Program ini menggunakan Fungsi [sebutAngka] untuk memproses konversi angka. Di dalam fungsi tersebut, digunakan struktur if-else if bertingkat untuk menangani berbagai rentang angka diantaranya: satuan yaitu 0-10, belasan yaitu 11-19, puluhan yaitu 20-99, dan seratus (100). Teknik modulo (%) dan pembagian integer (/) digunakan untuk memecah bilangan puluhan menjadi bagian puluhan dan satuan, memungkinkan program menggabungkan kata-kata seperti "Tujuh Puluh" dan "Sembilan".
 
-Kalau adalanjutan di lanjut disini aja
+### Soal 3
 
-soal nomor 2B
+Buatlah program yang dapat memberikan input dan output (seperti pada gambar yang ada di soal)
 
 ```go
-package main
+#include <iostream>
+using namespace std;
 
-func main() {
-	fmt.Println("kode untuk soal nomor 2B")
+int main() {
+    int n;
+
+    cout << "Masukkan angka: ";
+    cin >> n;
+
+    int a = n;
+
+    while (a >= 1) {
+
+        int b = 1;
+      
+        while (b <= n - a) {
+            cout << "  ";
+            b++;
+        }
+        
+        int c = a;
+        while (c >= 1) {
+            cout << c << " ";
+            c--;
+        }
+
+        cout << "* ";
+
+        int d = 1;
+        while (d <= a) {
+            cout << d << " ";
+            d++;
+        }
+
+        cout << endl;
+        a--;
+    }
+
+    int e = 1;
+    while (e <= n) {
+        cout << "  ";
+        e++;
+    }
+    
+    cout << "*" << endl;
+
+    return 0;
 }
+
 ```
 
 > Output
-> ![Screenshot bagian x](output/screenshot_soal2B.png)
+> ![Screenshot bagian x](output/screenshot_soal2A.png)
 
-penjelasan bedanya sesuai soal
+penjelasan singkat : 
+Kode ini bertujuan untuk menghasilkan sebuah pola simetris di konsol. Program ini menggunakan perulangan while dengan tujuan untuk menciptakan pola dua bagian yaitu sebuah segitiga terbalik di bagian atas dan sebuah titik bintang di bagian bawah. Pola ini dimulai dengan perulangan while terluar (while (a >= 1)) yang mengendalikan setiap baris dari atas ke bawah. Di setiap baris, perulangan while pertama (while (b <= n - a)) mencetak spasi di awal untuk menciptakan efek rata kanan. Selanjutnya, perulangan while berikutnya mencetak angka: dari c ke 1 (sisi kiri pola) dan dari 1 ke d (sisi kanan pola). Tanda bintang (*) ditambahkan di tengah untuk memisahkan kedua sisi. Bagian terakhir dari kode, di luar perulangan utama, mencetak baris terpisah di bagian bawah yang terdiri dari sejumlah spasi dan sebuah bintang tunggal.
+
 
 ## Referensi
 

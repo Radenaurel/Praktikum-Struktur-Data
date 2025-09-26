@@ -1,15 +1,279 @@
- <h1 align="center">Laporan Praktikum Modul X <br> Nama Modul</h1>
-<p align="center">NAMA - NIM</p>
+ <h1 align="center">Laporan Praktikum Modul 1 <br> Pengenalan CPP</h1>
+<p align="center">Raden Aurel Aditya Kusumawaningyun- 103112430267</p>
 
 ## Dasar Teori
-
-yang panjang dikit
+Bahasa C++ adalah evolusi signifikan dari Bahasa yang telah ada yaitu bahasa C, yang diciptakan oleh Bjarne Stroustrup pada awal 1980-an di AT&T Bell Laboratories dengan tujuan utama menambahkan fitur kelas (class) sebagai fondasi utama dari Pemrograman Berorientasi Objek (OOP). Nama 'C++' sendiri, yang menggunakan operator increment, secara tegas menunjukkan bahwa bahasa ini adalah versi yang sudah naik level dari pendahulunya, menyajikan empat pilar OOP yang esensial diantaranya Enkapsulasi, Pewarisan (Inheritance), Polimorfisme, dan Abstraksi, yang memungkinkan kita merancang struktur kode secara modular dan efisien. C++ diklasifikasikan sebagai bahasa tingkat menengah karena fleksibilitasnya dalam memanipulasi memori namun tetap mudah digunakan, dan sebagai bahasa yang dikompilasi, ia membutuhkan compiler untuk menerjemahkan kode sumbernya menjadi program yang dapat dieksekusi. Perlu dipahami juga bahwa C++ juga bersifat case-sensitive menjadi modal dasar agar Anda dapat merancang program yang tidak hanya berfungsi, tetapi juga terstruktur dan reusable.
 
 ## Guided
 
 ### soal 1
+Test CPP
+```go
+#include <iostream>
+using namespace std;
+int main()
+{
+    string ch;
+    cout << "Masukkan sebuah karakter: ";
+    // cin >> ch;
+    ch = getchar();  //Menggunakan getchar() untuk membaca satu karakter
+    cout << "Karakter yang Anda masukkan adalah: " << ch << endl;
+    return 0;
+}
 
-aku mengerjakan perulangan
+```
+
+Kode ini adalah demonstrasi sederhana bagaimana cara spesifik fungsi (getchar()) untuk mengambil awal karakter yang di inputkan oleh si pengguna.
+
+> Output
+> ![Screenshot bagian x](output/Raden.png)
+> %% Untuk mencantumkan screenshot, tidak boleh ada spasi di urlnya `()`, penamaan file bebas asal gak sara dan mudah dipahami aja,, dan jangan lupa hapus komen ini yah%%
+
+### soal 2
+Aritmatika
+
+```go
+#include <iostream>
+using namespace std;
+int main()
+{
+    int W, X, Y;
+    float Z;
+    X = 7;
+    Y = 3;
+    W = 1;
+    Z = (X + Y) / (Y + W);
+    cout << "Nilai z = " << Z << endl;
+    return 0;
+}
+
+```
+
+Kode ini dirancang untuk menghitung nilai variabel Z dengan operasi (X + Y) / (Y + W). Meskipun variabel hasil Z dideklarasikan sebagai float, mempunyai sebab untuk tidak keluar bilangan desimalnya terletak pada operan (X, Y, W) yang semuanya bertipe int. Dalam C++, operasi pembagian yang melibatkan dua bilangan bulat (10 / 4) akan menghasilkan pembagian integer, yang secara otomatis nantinya mengabaikan sisa pembagian dan hanya menghasilkan nilai bulatnya dari 2.0 menjadi 2 yang akan di simpan di variabel Z.
+
+> Output
+> ![Screenshot bagian x](output/Raden.png)
+> %% Untuk mencantumkan screenshot, tidak boleh ada spasi di urlnya `()`, penamaan file bebas asal gak sara dan mudah dipahami aja,, dan jangan lupa hapus komen ini yah%%
+
+### soal 3
+Perulangan
+
+```go
+#include <iostream>
+using namespace std;
+// int main()
+// {
+//     int jum;
+//     cout << "jumlah perulangan: ";
+//     cin >> jum;
+//     for (int i = 0; i < jum; i++)
+//     {
+//         cout << "saya sahroni\n";
+//     }
+//     return 1;
+// }
+
+
+// while
+int main()
+{
+    int i = 1;
+    int jum;
+    cin >> jum;
+    do
+    {
+        cout << "bahlil ke-" << (i + 1) << endl;
+        i++;
+    } while (i < jum);
+    return 0;
+}
+
+```
+
+Kode Perulangan ini adalah perulangan yang eksekusi awalnya akan tetap dieksekusi dalam kondisi apa pun dan menentukan eksekusi kedua setelah keluar hasil awal. Berbeda sama perulangan while biasa yang ngecek di awal, do-while ini disebut exit-controlled loop karena pengecekan kondisinya ada di akhir. hal tersebut penting sekali kalau untuk program memastikan ada langkah yang harus dikerjakan minimal satu kali, misalnya menampilkan menu utama atau memproses input pertama dari pengguna.
+
+> Output
+> ![Screenshot bagian x](output/Raden.png)
+> %% Untuk mencantumkan screenshot, tidak boleh ada spasi di urlnya `()`, penamaan file bebas asal gak sara dan mudah dipahami aja,, dan jangan lupa hapus komen ini yah%%
+
+
+### soal 4
+Kondisi
+
+```go
+#include <iostream>
+using namespace std;
+// int main()
+// {
+//     double tot_pembelian, diskon;
+//     cout << "total pembelian: Rp";
+//     cin >> tot_pembelian;
+//     diskon = 0;
+//     if (tot_pembelian >= 100000)
+//         diskon = 0.05 * tot_pembelian;
+//     cout << "besar diskon = Rp" << diskon;
+// }
+
+
+
+// int main()
+// {
+//     double tot_pembelian, diskon;
+//     cout << "total pembelian: Rp";
+//     cin >> tot_pembelian;
+//     diskon = 0;
+//     if (tot_pembelian >= 100000)
+//         diskon = 0.05 * tot_pembelian;
+//     else
+//         diskon = 0;
+//     cout << "besar diskon = Rp" << diskon;
+// }
+
+
+
+int main()
+{
+    int kode_hari;
+    cout << "Menentukan hari kerja/libur\n"<<endl;
+    cout << "1=Senin 3=Rabu 5=Jumat 7=Minggu "<<endl;
+    cout << "2=Selasa 4=Kamis 6=Sabtu "<<endl;
+    cin >> kode_hari;
+    switch (kode_hari)
+    {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        cout<<"Hari Kerja";
+        break;
+    case 6:
+    case 7:
+        cout<<"Hari Libur";
+        break;
+    default:
+        cout<<"Kode masukan salah!!!";
+    }
+    return 0;
+}
+
+```
+
+Kode program ini memperlihatkan salah satu cara terbaik untuk mengambil keputusan dalam program. Meskipun file ini juga menampilkan contoh solusi menggunakan struktur if dan if-else, yang kita eksekusi dan fokuskan adalah struktur kontrol switch.
+
+Struktur switch-case ini struktur yang sangat tepat dalam menangani banyak kondisi yang berasal dari satu variabel input (kode_hari). Kode ini secara spesifik bertujuan menentukan apakah hari yang dimasukkan pengguna termasuk Hari Kerja atau Hari Libur. Keunggulan utama dalam implementasi ini adalah penggunaan fitur beberapa case yang berurutan tanpa perintah break. Hal ini sangat efektif untuk mengelompokkan banyak nilai input. Mekanisme ini membuat kode menjadi jauh lebih ringkas, rapi, dan mudah dibaca dibandingkan jika kita harus menggunakan deretan panjang struktur if-else if untuk setiap kemungkinan hari.
+
+> Output
+> ![Screenshot bagian x](output/Raden.png)
+> %% Untuk mencantumkan screenshot, tidak boleh ada spasi di urlnya `()`, penamaan file bebas asal gak sara dan mudah dipahami aja,, dan jangan lupa hapus komen ini yah%%
+
+
+### soal 5
+Struct
+
+```go
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Definisi struct
+struct Mahasiswa {
+    string nama;
+    string nim;
+    float ipk;
+};
+
+int main() {
+
+    Mahasiswa mhs1;
+
+    cout << "Masukkan Nama Mahasiswa: ";
+    getline(cin, mhs1.nama);
+    // cin >> mhs1.nama;
+    cout << "Masukkan NIM Mahasiswa : ";
+    cin >> mhs1.nim;
+    cout << "Masukkan IPK Mahasiswa : ";
+    cin >> mhs1.ipk;
+
+    cout << "\n=== Data Mahasiswa ===" << endl;
+    cout << "Nama : " << mhs1.nama << endl;
+    cout << "NIM  : " << mhs1.nim << endl;
+    cout << "IPK  : " << mhs1.ipk << endl;
+
+    return 0;
+}
+
+
+```
+
+Kode ini mendemonstrasikan penggunaan struct dalam C++ untuk mengelompokkan data dengan tipe berbeda ke dalam satu kesatuan Logis. Dengan membuat variabel dari struct tersebut yaitu mhs1, kita dapat mengakses setiap anggota data  menggunakan operator titik(.). Penggunaan Struct ini adalah fondasi penting dalam pemrograman untuk membuat struktur data yang kompleks dan terorganisasi rapi.
+
+> Output
+> ![Screenshot bagian x](output/Raden.png)
+> %% Untuk mencantumkan screenshot, tidak boleh ada spasi di urlnya `()`, penamaan file bebas asal gak sara dan mudah dipahami aja,, dan jangan lupa hapus komen ini yah%%
+
+
+### soal 6
+Fungsi
+
+```go
+#include <iostream>
+using namespace std;
+
+// Prosedur: hanya menampilkan hasil, tidak mengembalikan nilai
+void tampilkanHasil(double p, double l)
+{
+    cout << "\n=== Hasil Perhitungan ===" << endl;
+    cout << "Panjang : " << p << endl;
+    cout << "Lebar   : " << l << endl;
+    cout << "Luas    : " << p * l << endl;
+    cout << "Keliling: " << 2 * (p + l) << endl;
+}
+
+// Fungsi: mengembalikan nilai luas
+double hitungLuas(double p, double l)
+{
+    return p * l;
+}
+
+// Fungsi: mengembalikan nilai keliling
+double hitungKeliling(double p, double l)
+{
+    return 2 * (p + l);
+}
+
+int main()
+{
+    double panjang, lebar;
+
+    cout << "Masukkan panjang: ";
+    cin >> panjang;
+    cout << "Masukkan lebar  : ";
+    cin >> lebar;
+
+    // Panggil fungsi
+    double luas = hitungLuas(panjang, lebar);
+    double keliling = hitungKeliling(panjang, lebar);
+
+    cout << "\nDihitung dengan fungsi:" << endl;
+    cout << "Luas      = " << luas << endl;
+    cout << "Keliling  = " << keliling << endl;
+
+    // Panggil prosedur
+    tampilkanHasil(panjang, lebar);
+
+    return 0;
+}
+
+```
+
+Kode ini membuktikan pentingnya modularitas atau pembagian menjadi fungsi-fungsi kecil untuk Mengefisiensikan seperti Fungsi yang terdiri dari (hitungLuas, hitungKeliling) sangat berguna ketika kita hanya membutuhkan hasil perhitungan untuk digunakan lebih lanjut dalam program. Sementara itu, Prosedur (tampilkanHasil) berguna dengan tugasnya hanya berfokus pada aksi tertentu, seperti menampilkan data atau memproses file, tanpa perlu mengembalikan nilai. Kedua konsep ini membuat program menjadi lebih terstruktur, mudah diuji, dan digunakan kembali nantinya.
+
+> Output
+> ![Screenshot bagian x](output/Raden.png)
+> %% Untuk mencantumkan screenshot, tidak boleh ada spasi di urlnya `()`, penamaan file bebas asal gak sara dan mudah dipahami aja,, dan jangan lupa hapus komen ini yah%%
+
+
 
 ## Unguided
 

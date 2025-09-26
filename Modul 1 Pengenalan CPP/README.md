@@ -26,8 +26,8 @@ int main()
 Kode ini adalah demonstrasi sederhana bagaimana cara spesifik fungsi (getchar()) untuk mengambil awal karakter yang di inputkan oleh si pengguna.
 
 > Output
-> ![Screenshot bagian x](UngadedTest.png)
-> %% Untuk mencantumkan screenshot, tidak boleh ada spasi di urlnya `()`, penamaan file bebas asal gak sara dan mudah dipahami aja,, dan jangan lupa hapus komen ini yah%%
+> ![Screenshot bagian x](output/UngadedTest.png)
+> Berikut SS VS Code dari Program Soal No 1
 
 ### soal 2
 Aritmatika
@@ -52,8 +52,9 @@ int main()
 Kode ini dirancang untuk menghitung nilai variabel Z dengan operasi (X + Y) / (Y + W). Meskipun variabel hasil Z dideklarasikan sebagai float, mempunyai sebab untuk tidak keluar bilangan desimalnya terletak pada operan (X, Y, W) yang semuanya bertipe int. Dalam C++, operasi pembagian yang melibatkan dua bilangan bulat (10 / 4) akan menghasilkan pembagian integer, yang secara otomatis nantinya mengabaikan sisa pembagian dan hanya menghasilkan nilai bulatnya dari 2.0 menjadi 2 yang akan di simpan di variabel Z.
 
 > Output
-> ![Screenshot bagian x](output/Raden.png)
-> %% Untuk mencantumkan screenshot, tidak boleh ada spasi di urlnya `()`, penamaan file bebas asal gak sara dan mudah dipahami aja,, dan jangan lupa hapus komen ini yah%%
+> ![Screenshot bagian x](output/UngaidedAritmatika.png)
+> Berikut SS VS Code dari Program Soal No 2
+
 
 ### soal 3
 Perulangan
@@ -93,8 +94,9 @@ int main()
 Kode Perulangan ini adalah perulangan yang eksekusi awalnya akan tetap dieksekusi dalam kondisi apa pun dan menentukan eksekusi kedua setelah keluar hasil awal. Berbeda sama perulangan while biasa yang ngecek di awal, do-while ini disebut exit-controlled loop karena pengecekan kondisinya ada di akhir. hal tersebut penting sekali kalau untuk program memastikan ada langkah yang harus dikerjakan minimal satu kali, misalnya menampilkan menu utama atau memproses input pertama dari pengguna.
 
 > Output
-> ![Screenshot bagian x](output/Raden.png)
-> %% Untuk mencantumkan screenshot, tidak boleh ada spasi di urlnya `()`, penamaan file bebas asal gak sara dan mudah dipahami aja,, dan jangan lupa hapus komen ini yah%%
+> ![Screenshot bagian x](output/UngaidedPerulangan.png)
+> Berikut SS VS Code dari Program Soal No 3
+
 
 
 ### soal 4
@@ -164,8 +166,9 @@ Kode program ini memperlihatkan salah satu cara terbaik untuk mengambil keputusa
 Struktur switch-case ini struktur yang sangat tepat dalam menangani banyak kondisi yang berasal dari satu variabel input (kode_hari). Kode ini secara spesifik bertujuan menentukan apakah hari yang dimasukkan pengguna termasuk Hari Kerja atau Hari Libur. Keunggulan utama dalam implementasi ini adalah penggunaan fitur beberapa case yang berurutan tanpa perintah break. Hal ini sangat efektif untuk mengelompokkan banyak nilai input. Mekanisme ini membuat kode menjadi jauh lebih ringkas, rapi, dan mudah dibaca dibandingkan jika kita harus menggunakan deretan panjang struktur if-else if untuk setiap kemungkinan hari.
 
 > Output
-> ![Screenshot bagian x](output/Raden.png)
-> %% Untuk mencantumkan screenshot, tidak boleh ada spasi di urlnya `()`, penamaan file bebas asal gak sara dan mudah dipahami aja,, dan jangan lupa hapus komen ini yah%%
+> ![Screenshot bagian x](output/UngaidedKondisi.png)
+> Berikut SS VS Code dari Program Soal No 4
+
 
 
 ### soal 5
@@ -209,8 +212,9 @@ int main() {
 Kode ini mendemonstrasikan penggunaan struct dalam C++ untuk mengelompokkan data dengan tipe berbeda ke dalam satu kesatuan Logis. Dengan membuat variabel dari struct tersebut yaitu mhs1, kita dapat mengakses setiap anggota data  menggunakan operator titik(.). Penggunaan Struct ini adalah fondasi penting dalam pemrograman untuk membuat struktur data yang kompleks dan terorganisasi rapi.
 
 > Output
-> ![Screenshot bagian x](output/Raden.png)
-> %% Untuk mencantumkan screenshot, tidak boleh ada spasi di urlnya `()`, penamaan file bebas asal gak sara dan mudah dipahami aja,, dan jangan lupa hapus komen ini yah%%
+> ![Screenshot bagian x](output/UngaidedStruct.png)
+> Berikut SS VS Code dari Program Soal No 5
+
 
 
 ### soal 6
@@ -270,8 +274,9 @@ int main()
 Kode ini membuktikan pentingnya modularitas atau pembagian menjadi fungsi-fungsi kecil untuk Mengefisiensikan seperti Fungsi yang terdiri dari (hitungLuas, hitungKeliling) sangat berguna ketika kita hanya membutuhkan hasil perhitungan untuk digunakan lebih lanjut dalam program. Sementara itu, Prosedur (tampilkanHasil) berguna dengan tugasnya hanya berfokus pada aksi tertentu, seperti menampilkan data atau memproses file, tanpa perlu mengembalikan nilai. Kedua konsep ini membuat program menjadi lebih terstruktur, mudah diuji, dan digunakan kembali nantinya.
 
 > Output
-> ![Screenshot bagian x](output/Raden.png)
-> %% Untuk mencantumkan screenshot, tidak boleh ada spasi di urlnya `()`, penamaan file bebas asal gak sara dan mudah dipahami aja,, dan jangan lupa hapus komen ini yah%%
+> ![Screenshot bagian x](output/UngaidedFungsi.png)
+> Berikut SS VS Code dari Program Soal No 6
+
 
 
 

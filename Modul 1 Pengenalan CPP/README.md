@@ -23,7 +23,7 @@ int main()
 
 ```
 
-Kode ini adalah demonstrasi sederhana bagaimana cara spesifik fungsi (getchar()) untuk mengambil awal karakter yang di inputkan oleh si pengguna.
+Kode ini adalah demonstrasi sederhana bagaimana cara spesifik fungsi (getchar()) untuk mengambil awal karakter dari semua karakter inputan yang di inputkan oleh si pengguna.
 
 > Output
 > ![Screenshot bagian x](output/UngadedTest.png)

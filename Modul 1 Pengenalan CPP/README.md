@@ -394,7 +394,7 @@ Program ini menggunakan Fungsi [sebutAngka] untuk memproses konversi angka. Di d
 
 Buatlah program yang dapat memberikan input dan output (seperti pada gambar yang ada di soal)
  
- > ![Screenshot bagian x](output/Ungaided3yagesya.png)
+ > ![Screenshot bagian x](output/SoalNomer3.png)
 
 ```go
 #include <iostream>

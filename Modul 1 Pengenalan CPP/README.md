@@ -2,7 +2,7 @@
 <p align="center">Raden Aurel Aditya Kusumawaningyun- 103112430267</p>
 
 ## Dasar Teori
-Bahasa C++ adalah evolusi signifikan dari Bahasa yang telah ada yaitu bahasa C, yang diciptakan oleh Bjarne Stroustrup pada awal 1980-an di AT&T Bell Laboratories dengan tujuan utama menambahkan fitur kelas (class) sebagai fondasi utama dari Pemrograman Berorientasi Objek (OOP). Nama 'C++' sendiri, yang menggunakan operator increment, secara tegas menunjukkan bahwa bahasa ini adalah versi yang sudah naik level dari pendahulunya, menyajikan empat pilar OOP yang esensial diantaranya Enkapsulasi, Pewarisan (Inheritance), Polimorfisme, dan Abstraksi, yang memungkinkan kita merancang struktur kode secara modular dan efisien. C++ diklasifikasikan sebagai bahasa tingkat menengah karena fleksibilitasnya dalam memanipulasi memori namun tetap mudah digunakan, dan sebagai bahasa yang dikompilasi, ia membutuhkan compiler untuk menerjemahkan kode sumbernya menjadi program yang dapat dieksekusi. Perlu dipahami juga bahwa C++ juga bersifat case-sensitive menjadi modal dasar agar Anda dapat merancang program yang tidak hanya berfungsi, tetapi juga terstruktur dan reusable.
+Bahasa C++ adalah evolusi signifikan dari Bahasa yang telah ada yaitu bahasa C, yang diciptakan oleh Bjarne Stroustrup pada awal 1980-an di AT&T Bell Laboratories dengan tujuan utama menambahkan fitur kelas sebagai fondasi utama dari Pemrograman Berorientasi Objek (OOP). Nama 'C++' sendiri, yang menggunakan operator increment, secara tegas menunjukkan bahwa bahasa ini adalah versi yang sudah naik level dari pendahulunya, menyajikan empat pilar OOP yang esensial diantaranya Enkapsulasi, Pewarisan (Inheritance), Polimorfisme, dan Abstraksi, yang memungkinkan kita merancang struktur kode secara modular dan efisien. C++ diklasifikasikan sebagai bahasa tingkat menengah karena fleksibilitasnya dalam memanipulasi memori namun tetap mudah digunakan, dan sebagai bahasa yang dikompilasi, ia membutuhkan compiler untuk menerjemahkan kode sumbernya menjadi program yang dapat dieksekusi. Perlu dipahami juga bahwa C++ juga bersifat case-sensitive menjadi modal dasar agar Anda dapat merancang program yang tidak hanya berfungsi, tetapi juga terstruktur dan reusable.
 
 ## Guided
 
@@ -393,6 +393,8 @@ Program ini menggunakan Fungsi [sebutAngka] untuk memproses konversi angka. Di d
 ### Soal 3
 
 Buatlah program yang dapat memberikan input dan output (seperti pada gambar yang ada di soal)
+ 
+ > ![Screenshot bagian x](output/Ungaided3yagesya.png)
 
 ```go
 #include <iostream>

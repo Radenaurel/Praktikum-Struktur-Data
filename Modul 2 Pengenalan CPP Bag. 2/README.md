@@ -1,8 +1,8 @@
  <h1 align="center">Laporan Praktikum Modul 2 <br> Pengenalan CPP Bag 2 </h1>
-<p align="center">Raden Aurel Aditya Kusumawaningyun- 103112430267</p>
+<p align="center">Raden Aurel Aditya Kusumawaningyun - 103112430267</p>
 
 ## Dasar Teori
-Dalam studi Struktur Data, pondasi dimulai dengan memahami Array sebagai koleksi data sejenis yang tersimpan secara berurutan dan diakses melalui indeks. Konsep ini meluas hingga Array Dua Dimensi yang representasinya menyerupai tabel. Keterorganisasian data ini erat kaitannya dengan bagaimana program mengelola Memori (RAM), di mana setiap variabel memiliki alamat (address) unik. Untuk berinteraksi langsung dengan alamat tersebut, kita menggunakan variabel Pointer, yang secara spesifik bertugas menyimpan alamat memori variabel lain. Memahami Pointer sangat esensial karena ia menjadi kunci dalam mekanisme pelewatan parameter pada fungsi: ketika menggunakan Pemanggilan dengan Nilai (Call by Value), nilai variabel asli tidak akan berubah di luar fungsi ; namun, melalui Pemanggilan dengan Pointer atau Referensi (Call by Reference), yang pada dasarnya melewatkan alamat variabel, fungsi memiliki kemampuan untuk mengubah nilai variabel aktual yang berada di luar cakupannya. Konsep-konsep dasar ini merupakan landasan kritis dalam pemrograman modular, yang bertujuan agar kode menjadi lebih terstruktur, mudah diuji, dan reusable.
+Dalam studi Struktur Data, pondasi dimulai dengan memahami Array sebagai koleksi data sejenis yang tersimpan secara berurutan dan diakses melalui indeks. Konsep ini meluas hingga Array Dua Dimensi yang representasinya menyerupai tabel. Keterorganisasian data ini erat kaitannya dengan bagaimana program mengelola Memori, di mana setiap variabel memiliki alamat unik. Untuk berinteraksi langsung dengan alamat tersebut, kita menggunakan variabel Pointer, yang secara spesifik bertugas menyimpan alamat memori variabel lain. Memahami Pointer sangat esensial karena ia menjadi kunci dalam mekanisme pelewatan parameter pada fungsi yaitu ketika menggunakan Pemanggilan dengan Nilai, nilai variabel asli tidak akan berubah di luar fungsi ; namun, melalui Pemanggilan dengan Pointer atau Referensi, yang pada dasarnya melewatkan alamat variabel, fungsi memiliki kemampuan untuk mengubah nilai variabel aktual yang berada di luar cakupannya. Konsep-konsep dasar ini merupakan landasan kritis dalam pemrograman modular, yang bertujuan agar kode menjadi lebih terstruktur, mudah diuji, dan reusable.
 
 ## Guided
 
@@ -41,7 +41,7 @@ void tukaryagesya(int *px, int *py)
 
 ```
 
-Kode C++ ini mendemonstrasikan mekanisme Pemanggilan dengan Pointer untuk menukar nilai dua variabel di luar fungsi utama. Intinya, saat fungsi tukar &a, &b dipanggil, ia tidak menerima nilai variabel 10 dan 20, melainkan alamat memori variabel a dan b. Di dalam fungsi tukar, operator Dereference (*) digunakan untuk mengakses lokasi memori asli tersebut, sehingga operasi penukaran (*px = *py; dan *py = temp) secara langsung memodifikasi nilai a dan b di dalam memori. Dengan cara ini, nilai variabel a dan b benar-benar tertukar setelah fungsi selesai dieksekusi, menghasilkan output a = 20, b = 10.
+Kode C++ ini mendemonstrasikan mekanisme Pemanggilan dengan Pointer untuk menukar nilai dua variabel di luar fungsi utama. Intinya, saat fungsi tukar &a, &b dipanggil, ia tidak menerima nilai variabel 10 dan 20, melainkan alamat memori variabel a dan b. Di dalam fungsi tukar, operator Dereference (*) digunakan untuk mengakses lokasi memori asli tersebut, sehingga operasi penukaran *px = *py; dan *py = temp secara langsung memodifikasi nilai a dan b di dalam memori. Dengan cara ini, nilai variabel a dan b benar-benar tertukar setelah fungsi selesai dieksekusi, menghasilkan output a = 20, b = 10.
 
 > Output
 > ![Screenshot bagian x](output/Guided1.png)
@@ -93,35 +93,57 @@ Kode C++ ini mendemonstrasikan mekanisme Pemanggilan dengan Referensi untuk menu
 
 ### Soal 1
 
-Buatlah program yang menerima input-an dua buah bilangan bertipe float, kemudian memberikan output-an hasil penjumlahan, pengurangan, perkalian, dan pembagian dari dua bilangan tersebut.
+Buatlah sebuah program untuk melakukan transpose pada sebuah matriks persegi berukuran 3x3. Operasi transpose adalah mengubah baris menjadi kolom dan sebaliknya. Inisialisasi matriks awal di dalam kode, kemudian buat logika untuk melakukan transpose dan simpan hasilnya ke dalam matriks baru. Terakhir, tampilkan matriks awal dan matriks hasil transpose.
+
+Contoh Output:
+
+Matriks Awal:
+1 2 3
+4 5 6
+7 8 9
+
+Matriks Hasil Transpose:
+1 4 7
+2 5 8
+3 6 9
+
 
 ```go
 #include <iostream>
-#include <iomanip> 
 using namespace std;
 
-int main() {
-    double bilangan1, bilangan2; 
+const int uMatriks = 3;
 
-    cout << " === Kalkulator Desimal === " << endl;
-
-    cout << "Masukkan bilangan ke-1 : ";
-    cin >> bilangan1;
-    cout << "Masukkan bilangan ke-2 : ";
-    cin >> bilangan2;
-
-    cout << fixed << setprecision(2);
-
-    cout << "\n=== Hasil Operasi Bilangan Desimal ===" << endl;
-    cout << "Penjumlahan : " << bilangan1 + bilangan2 << endl;
-    cout << "Pengurangan : " << bilangan1 - bilangan2 << endl;
-    cout << "Perkalian   : " << bilangan1 * bilangan2 << endl;
-
-    if (bilangan2 != 0) {
-        cout << "Pembagian   : " << bilangan1 / bilangan2 << endl;
-    } else {
-        cout << "Pembagian   : Error! Pembagi tidak boleh nol." << endl;
+void tampilkanMatriks(int matriks[uMatriks][uMatriks]) {
+    for (int i = 0; i < uMatriks; i++) {
+        for (int j = 0; j < uMatriks; j++) {
+            cout << matriks[i][j] << " ";
+        }
+        cout << endl; 
     }
+}
+
+int main() {
+  
+    int matriksAwal[uMatriks][uMatriks] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    int matriksTranspose[uMatriks][uMatriks];
+
+    for (int i = 0; i < uMatriks; i++) {
+        for (int j = 0; j < uMatriks; j++) {
+            matriksTranspose[j][i] = matriksAwal[i][j];
+        }
+    }
+
+    cout << "Matriks Awal:\n";
+    tampilkanMatriks(matriksAwal);
+
+    cout << "\nMatriks Hasil Transpose:\n";
+    tampilkanMatriks(matriksTranspose);
 
     return 0;
 }
@@ -133,63 +155,37 @@ int main() {
 
 
 Penjelasan Singkat:
-Program ini menggunakan tipe data double yang digunakan untuk bilangan desimal seperti float tapi lebih presisi untuk menerima dua input dari pengguna. Semua operasi aritmatika dilakukan dengan rumus operasi yang saya buat dan hasilnya dicetak langsung menggunakan cout. Ditambahkan pengecekan if untuk mencegah program error jika pengguna memasukkan angka nol sebagai pembagi. Penggunaan <iomanip> dan setprecision(2) digunakan agar output angka desimal terlihat rapi dan memiliki 2 angka dibelakang koma.
-
+Kode C++ ini mendemonstrasikan bagaimana kita bisa membuat program yang efisien untuk melakukan operasi Transpose Matriks berukuran 3×3 menggunakan Array Dua Dimensi. Program ini bertujuan untuk mengubah baris menjadi kolom dan sebaliknya pada matriksAwal dan menyimpan hasilnya pada matriksTranspose. Kode ini juga menggunakan Prosedur tampilkanMatriks (void) untuk mencetak isi matriks, yang mendukung konsep modularitas dan membuat kode utama lebih rapi dan mudah digunakan kembali (reusable). Secara keseluruhan, kode ini membuktikan bahwa operasi transpose dalam pemrograman hanyalah masalah membalik posisi indeks setiap elemen data saat disalin dari array sumber ke array tujuan.
+ 
 ### Soal 2
 
-Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai angka tersebut dalam bentuk tulisan. Angka yang akan di-input-kan user adalah bilangan bulat positif mulai dari 0 s.d 100.
+Buatlah program yang menunjukkan penggunaan call by reference. Buat sebuah prosedur bernama kuadratkan yang menerima satu parameter integer secara referensi (&). Prosedur ini akan mengubah nilai asli variabel yang dilewatkan dengan nilai kuadratnya. Tampilkan nilai variabel di main() sebelum dan sesudah memanggil prosedur untuk membuktikan perubahannya. 
 
-Contoh: 79 : tujuh puluh Sembilan
+Contoh Output:
+
+Nilai awal: 5
+Nilai setelah dikuadratkan: 25
 
 ```go
 #include <iostream>
-#include <string>
 using namespace std;
 
-string sebutAngka(int angka) {
-   
-    string satuan[] = {"Nol", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan"};
-    string hasil = "";
-
-    if (angka < 11) {
-        
-        hasil = satuan[angka];
-    } else if (angka < 20) {
-      
-        if (angka == 10) return "Sepuluh";
-        else if (angka == 11) return "Sebelas";
-        else return satuan[angka % 10] + " Belas";
-    } else if (angka <= 99) {
-        
-        int puluhan = angka / 10;
-        int sisa = angka % 10;
-
-        if (puluhan == 2) hasil += "Dua Puluh";
-        else if (puluhan == 7) hasil += "Tujuh Puluh"; 
-        else hasil += satuan[puluhan] + " Puluh";
-
-        if (sisa != 0) {
-            hasil += " " + satuan[sisa];
-        }
-    } else if (angka == 100) {
-        hasil = "Seratus";
-    }
-    return hasil;
-}
+void kuadratkan(int &bilangan); 
 
 int main() {
-    int inputAngka;
+    int nilai = 5;
 
-    cout << "Masukkan angka (0-100): ";
-    cin >> inputAngka;
+    cout << "Nilai awal: " << nilai << endl;
 
-    if (inputAngka < 0 || inputAngka > 100) {
-        cout << "Output: Angka di luar batas 0-100." << endl;
-    } else {
-        cout << "Output: " << inputAngka << " : " << sebutAngka(inputAngka) << endl;
-    }
+    kuadratkan(nilai);
+
+    cout << "Nilai setelah dikuadratkan: " << nilai << endl;
 
     return 0;
+}
+
+void kuadratkan(int &bilangan) {
+    bilangan = bilangan * bilangan;
 }
 ```
 
@@ -197,84 +193,21 @@ int main() {
 > ![Screenshot bagian x](output/Ungaided2yagesya.png)
 
 penjelasan singkat : 
-Program ini menggunakan Fungsi [sebutAngka] untuk memproses konversi angka. Di dalam fungsi tersebut, digunakan struktur if-else if bertingkat untuk menangani berbagai rentang angka diantaranya: satuan yaitu 0-10, belasan yaitu 11-19, puluhan yaitu 20-99, dan seratus (100). Teknik modulo (%) dan pembagian integer (/) digunakan untuk memecah bilangan puluhan menjadi bagian puluhan dan satuan, memungkinkan program menggabungkan kata-kata seperti "Tujuh Puluh" dan "Sembilan".
-
-### Soal 3
-
-Buatlah program yang dapat memberikan input dan output (seperti pada gambar yang ada di soal)
- 
- > ![Screenshot bagian x](output/SoalNomer3.png)
-
-```go
-#include <iostream>
-using namespace std;
-
-int main() {
-    int n;
-
-    cout << "Masukkan angka: ";
-    cin >> n;
-
-    int a = n;
-
-    while (a >= 1) {
-
-        int b = 1;
-      
-        while (b <= n - a) {
-            cout << "  ";
-            b++;
-        }
-        
-        int c = a;
-        while (c >= 1) {
-            cout << c << " ";
-            c--;
-        }
-
-        cout << "* ";
-
-        int d = 1;
-        while (d <= a) {
-            cout << d << " ";
-            d++;
-        }
-
-        cout << endl;
-        a--;
-    }
-
-    int e = 1;
-    while (e <= n) {
-        cout << "  ";
-        e++;
-    }
-    
-    cout << "*" << endl;
-
-    return 0;
-}
-
-```
-
-> Output
-> ![Screenshot bagian x](output/Ungaided3yagesya.png)
-
-penjelasan singkat : 
-Kode ini bertujuan untuk menghasilkan sebuah pola simetris di konsol. Program ini menggunakan perulangan while dengan tujuan untuk menciptakan pola dua bagian yaitu sebuah segitiga terbalik di bagian atas dan sebuah titik bintang di bagian bawah. Pola ini dimulai dengan perulangan while terluar (while (a >= 1)) yang mengendalikan setiap baris dari atas ke bawah. Di setiap baris, perulangan while pertama (while (b <= n - a)) mencetak spasi di awal untuk menciptakan efek rata kanan. Selanjutnya, perulangan while berikutnya mencetak angka: dari c ke 1 (sisi kiri pola) dan dari 1 ke d (sisi kanan pola). Tanda bintang (*) ditambahkan di tengah untuk memisahkan kedua sisi. Bagian terakhir dari kode, di luar perulangan utama, mencetak baris terpisah di bagian bawah yang terdiri dari sejumlah spasi dan sebuah bintang tunggal.
+Kode C++ ini mendemonstrasikan mekanisme Pemanggilan dengan Referensi untuk menukar nilai variabel a dan b di luar fungsi utama. Fungsi tukar didefinisikan dengan menggunakan simbol & pada parameter formalnya int &x, int &y, yang menyebabkan x dan y menjadi alias untuk variabel asli a dan b. Saat tukar a, b; dipanggil, semua operasi penukaran yang terjadi pada x dan y di dalam fungsi x = y; dan y = temp; secara langsung memengaruhi dan mengubah nilai variabel asli di lokasi memori yang sama. Hasilnya, nilai a dan b berhasil tertukar secara permanen a = 20, b = 10. Mekanisme ini adalah cara yang efisien untuk memodifikasi data sumber di luar fungsi tanpa perlu menggunakan operator pointer "*".
 
 
 ## Referensi
-
 Lippman, S. B., Lajoie, J., & Moo, B. E. (2012). C++ Primer (5th ed.). Addison-Wesley Professional.
-
-Microsoft. (n.d.). struct (C++). Microsoft Learn. Retrieved September 26, 2025, from https://learn.microsoft.com/en-us/cpp/cpp/struct-cpp
 
 Stroustrup, B. (1994). The Design and Evolution of C++. Addison-Wesley Publishing Company.
 
 Stroustrup, B. (2013). The C++ Programming Language (4th ed.). Addison-Wesley Professional.
 
-The C++ Resources Network. (n.d.). C++ Tutorials. Retrieved September 26, 2025, from https://www.cplusplus.com/doc/tutorial/
+Modul Praktikum & Institusional
+Telkom University. (n.d.). Modul 2 Pengenalan Bahasa C++ (Bagian Kedua). Fakultas Informatika.
 
-The C++ Standard Library. (n.d.). C++ reference. Retrieved September 26, 2025, from https://en.cppreference.com/w/cpp/
+The C++ Resources Network. (n.d.). C++ Tutorials. Retrieved October 3, 2025, from https://www.cplusplus.com/doc/tutorial/
 
+The C++ Standard Library. (n.d.). C++ reference. Retrieved October 3, 2025, from https://en.cppreference.com/w/cpp/
+
+Microsoft. (n.d.). struct (C++). Microsoft Learn. Retrieved October 3, 2025, from https://learn.microsoft.com/en-us/cpp/cpp/struct-cpp

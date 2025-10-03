@@ -40,11 +40,12 @@ void tukaryagesya(int *px, int *py)
 }
 
 ```
+penjelasan singkat : 
 
 Kode C++ ini mendemonstrasikan mekanisme Pemanggilan dengan Pointer untuk menukar nilai dua variabel di luar fungsi utama. Intinya, saat fungsi tukar &a, &b dipanggil, ia tidak menerima nilai variabel 10 dan 20, melainkan alamat memori variabel a dan b. Di dalam fungsi tukar, operator Dereference (*) digunakan untuk mengakses lokasi memori asli tersebut, sehingga operasi penukaran *px = *py; dan *py = temp secara langsung memodifikasi nilai a dan b di dalam memori. Dengan cara ini, nilai variabel a dan b benar-benar tertukar setelah fungsi selesai dieksekusi, menghasilkan output a = 20, b = 10.
 
 > Output
-> ![Screenshot bagian x](output/Guided1.png)
+> ![Screenshot bagian x](Output2/Guided1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 ### soal 2
@@ -79,11 +80,12 @@ void tukar(int &x, int &y)
     y = temp;
 }
 ```
+penjelasan singkat : 
 
 Kode C++ ini mendemonstrasikan mekanisme Pemanggilan dengan Referensi untuk menukar nilai dua variabel yang berada di luar fungsi utama. Intinya, saat fungsi tukar a, b dipanggil, ia tidak menyalin nilai variabel a dan b; melainkan, melalui simbol reference (&) pada parameter formalnya, variabel x dan y menjadi alias yang merujuk pada variabel a dan b di lokasi memori yang sama. Di dalam fungsi tukar, semua operasi penukaran x = y; dan y = temp; secara langsung memodifikasi nilai a dan b di dalam memori. Dengan cara ini, nilai variabel a dan b benar-benar tertukar setelah fungsi selesai dieksekusi, menghasilkan output a = 20, b = 10.
 
 > Output
-> ![Screenshot bagian x](output/Guided2.png)
+> ![Screenshot bagian x](Output2/Guided2.png)
 > Berikut SS VS Code dari Program Soal No 2
 
 
@@ -150,11 +152,12 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/UngaidedPertama.png)
+> ![Screenshot bagian x](Output2/UngaidedPertama.png)
 > Ss VS Code Soal Unguided no 1
 
 
 Penjelasan Singkat:
+
 Kode C++ ini mendemonstrasikan bagaimana kita bisa membuat program yang efisien untuk melakukan operasi Transpose Matriks berukuran 3×3 menggunakan Array Dua Dimensi. Program ini bertujuan untuk mengubah baris menjadi kolom dan sebaliknya pada matriksAwal dan menyimpan hasilnya pada matriksTranspose. Kode ini juga menggunakan Prosedur tampilkanMatriks (void) untuk mencetak isi matriks, yang mendukung konsep modularitas dan membuat kode utama lebih rapi dan mudah digunakan kembali (reusable). Secara keseluruhan, kode ini membuktikan bahwa operasi transpose dalam pemrograman hanyalah masalah membalik posisi indeks setiap elemen data saat disalin dari array sumber ke array tujuan.
  
 ### Soal 2
@@ -164,6 +167,7 @@ Buatlah program yang menunjukkan penggunaan call by reference. Buat sebuah prose
 Contoh Output:
 
 Nilai awal: 5
+
 Nilai setelah dikuadratkan: 25
 
 ```go
@@ -190,9 +194,10 @@ void kuadratkan(int &bilangan) {
 ```
 
 > Output
-> ![Screenshot bagian x](output/Ungaided2yagesya.png)
+> ![Screenshot bagian x](Output2/Ungaided2.png)
 
 penjelasan singkat : 
+
 Kode C++ ini mendemonstrasikan mekanisme Pemanggilan dengan Referensi untuk menukar nilai variabel a dan b di luar fungsi utama. Fungsi tukar didefinisikan dengan menggunakan simbol & pada parameter formalnya int &x, int &y, yang menyebabkan x dan y menjadi alias untuk variabel asli a dan b. Saat tukar a, b; dipanggil, semua operasi penukaran yang terjadi pada x dan y di dalam fungsi x = y; dan y = temp; secara langsung memengaruhi dan mengubah nilai variabel asli di lokasi memori yang sama. Hasilnya, nilai a dan b berhasil tertukar secara permanen a = 20, b = 10. Mekanisme ini adalah cara yang efisien untuk memodifikasi data sumber di luar fungsi tanpa perlu menggunakan operator pointer "*".
 
 

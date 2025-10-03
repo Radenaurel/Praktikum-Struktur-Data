@@ -44,7 +44,7 @@ void tukaryagesya(int *px, int *py)
 Kode C++ ini mendemonstrasikan mekanisme Pemanggilan dengan Pointer untuk menukar nilai dua variabel di luar fungsi utama. Intinya, saat fungsi tukar &a, &b dipanggil, ia tidak menerima nilai variabel 10 dan 20, melainkan alamat memori variabel a dan b. Di dalam fungsi tukar, operator Dereference (*) digunakan untuk mengakses lokasi memori asli tersebut, sehingga operasi penukaran (*px = *py; dan *py = temp) secara langsung memodifikasi nilai a dan b di dalam memori. Dengan cara ini, nilai variabel a dan b benar-benar tertukar setelah fungsi selesai dieksekusi, menghasilkan output a = 20, b = 10.
 
 > Output
-> ![Screenshot bagian x](output/UngadedTest.png)
+> ![Screenshot bagian x](output/Guided1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 ### soal 2

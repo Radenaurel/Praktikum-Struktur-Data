@@ -83,7 +83,7 @@ void tukar(int &x, int &y)
 Kode C++ ini mendemonstrasikan mekanisme Pemanggilan dengan Referensi untuk menukar nilai dua variabel yang berada di luar fungsi utama. Intinya, saat fungsi tukar a, b dipanggil, ia tidak menyalin nilai variabel a dan b; melainkan, melalui simbol reference (&) pada parameter formalnya, variabel x dan y menjadi alias yang merujuk pada variabel a dan b di lokasi memori yang sama. Di dalam fungsi tukar, semua operasi penukaran x = y; dan y = temp; secara langsung memodifikasi nilai a dan b di dalam memori. Dengan cara ini, nilai variabel a dan b benar-benar tertukar setelah fungsi selesai dieksekusi, menghasilkan output a = 20, b = 10.
 
 > Output
-> ![Screenshot bagian x](output/UngaidedAritmatika.png)
+> ![Screenshot bagian x](output/Guided2.png)
 > Berikut SS VS Code dari Program Soal No 2
 
 

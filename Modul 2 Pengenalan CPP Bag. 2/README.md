@@ -150,7 +150,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/Ungaided1yagesya.png)
+> ![Screenshot bagian x](output/Ungaided1.png)
 > Ss VS Code Soal Unguided no 1
 
 

@@ -322,66 +322,40 @@ void tukarNilaiPointer(int *ptr1, int *ptr2);
 
 #endif 
 ```
-> ![Screenshot bagian x](output3/ungaided2.h.png)
+> ![Screenshot bagian x](output3/ungaided3.h.png)
 
 ungaided3.cpp
 ```go
 #include "ungaided3.h"
 
-int main() {
+void tampilkanArray(const int arr[][SIZE], const string& nama) {
+    cout << "\nIsi Array " << nama << " (" << SIZE << "x" << SIZE << "):" << endl;
+    for (int i = 0; i < SIZE; ++i) {
+        for (int j = 0; j < SIZE; ++j) {
+            cout << setw(5) << arr[i][j];
+        }
+        cout << endl;
+    }
+}
 
-    int array1[SIZE][SIZE] = {
-        {10, 20, 30},
-        {40, 50, 60},
-        {70, 80, 90}
-    };
-    
-    int array2[SIZE][SIZE] = {
-        {11, 22, 33},
-        {44, 55, 66},
-        {77, 88, 99}
-    };
+void tukarIsiArray(int arrA[][SIZE], int arrB[][SIZE], int baris, int kolom) {
+    if (baris >= 0 && baris < SIZE && kolom >= 0 && kolom < SIZE) {
+        int temp = arrA[baris][kolom];
+        arrA[baris][kolom] = arrB[baris][kolom];
+        arrB[baris][kolom] = temp;
+        cout << "\nOperasi: Berhasil menukar elemen pada posisi [" << baris << "][" << kolom << "]." << endl;
+    } else {
+        cout << "\nError: Posisi indeks tidak valid." << endl;
+    }
+}
 
-    int valA = 100;
-    int valB = 200;
-
-    int *ptrA = &valA;
-    int *ptrB = &valB;
-
-  
-    cout << "DEMONSTRASI ARRAY 2D, POINTER, DAN FUNGSI SWAP" << endl;
-    
-
-    // --- BAGIAN A: Menampilkan Array Awal ---
-    tampilkanArray(array1, "Array 1 (Awal)");
-    tampilkanArray(array2, "Array 2 (Awal)");
-
-    // --- BAGIAN B: Menukar Isi Array 2D pada Posisi Tertentu ---
-    tukarIsiArray(array1, array2, 1, 1); 
-
-    // Menampilkan Array Setelah Pertukaran
-    tampilkanArray(array1, "Array 1 (Setelah Tukar)");
-    tampilkanArray(array2, "Array 2 (Setelah Tukar)");
-    
-    // --- BAGIAN C: Menukar Isi Variabel yang Ditunjuk oleh Pointer ---
-    
-    cout << "DEMONSTRASI TUKAR NILAI VIA POINTER (Call by Reference)" << endl;
-  
-
-    cout << "Nilai Awal (valA=" << valA << ", valB=" << valB << ")" << endl;
-    cout << "Nilai yang ditunjuk: *ptrA=" << *ptrA << ", *ptrB=" << *ptrB << endl;
-
-    tukarNilaiPointer(ptrA, ptrB);
-
-    cout << "\nOperasi: tukarNilaiPointer(ptrA, ptrB) dieksekusi..." << endl;
-    
-    cout << "Nilai Akhir (valA=" << valA << ", valB=" << valB << ")" << endl;
-    cout << "Nilai yang ditunjuk: *ptrA=" << *ptrA << ", *ptrB=" << *ptrB << endl;
-
-    return 0;
+void tukarNilaiPointer(int *ptr1, int *ptr2) {
+    int temp = *ptr1;
+    *ptr1 = *ptr2;
+    *ptr2 = temp;
 }
 ```
-> ![Screenshot bagian x](output3/ungaided2.cpp.png)
+> ![Screenshot bagian x](output3/ungaided3.cpp.png)
 
 mainungaided3.cpp
 ```go
@@ -436,15 +410,16 @@ int main() {
 }
 ```
 > Output
-> ![Screenshot bagian x](output3/mainugaided2.cpp.png)
+> ![Screenshot bagian x](output3/mainungaided3.cpp.png)
 > > Berikut SS VS Code dari Program Soal No 1
+
+> Output
+> ![Screenshot bagian x](output3/terminalungaided3.png)
+> > Berikut SS terminal Ungaided3
 
 penjelasan singkat : 
 
-Kode C++ ini adalah implementasi murni dari Abstract Data Type (ADT) pelajaran, yang secara efisien mengelola type data terstruktur. Intinya, kode ini menggunakan fungsi konstruktor create_pelajaran untuk menugaskan pembuatan dan inisialisasi objek pelajaran baru. Dengan mendefinisikan function tersebut untuk menerima nama dan kode mapel lalu mengembalikannya sebagai objek utuh, proses ini menjamin bahwa setiap objek pelajaran selalu tercipta dalam kondisi valid, sesuai prinsip ADT. Seluruh proses ini diorganisasi dengan memisahkan Spesifikasi (.h) dan Realisasi (.cpp), memastikan penggunaan yang bersih dan modular melalui fungsi tampil_pelajaran pada driver utama.
-
-
-
+Kode C++ ini adalah demonstrasi fungsional dari manipulasi Array 2D dan Pointer, menekankan pada konsep Call by Reference untuk operasi pertukaran data. Intinya, fungsi tukarIsiArray memungkinkan modifikasi langsung pada elemen array (array1 dan array2) pada posisi tertentu karena array secara alami dilewatkan sebagai referensi, menjamin perubahan elemen bersifat permanen. Sementara itu, fungsi tukarNilaiPointer menunjukkan esensi dari Pemanggilan dengan Pointer: ia menerima alamat memori dua variabel (valA dan valB) dan menggunakan operator Dereference (*) untuk mengakses dan menukar nilai yang tersimpan di lokasi memori asli tersebut. Hasilnya, pertukaran data pada array dan pertukaran nilai valA dan valB melalui pointer berhasil dilakukan secara permanen di luar fungsi utama.
 
 ## Referensi
 Lippman, S. B., Lajoie, J., & Moo, B. E. (2012). C++ Primer (5th ed.). Addison-Wesley Professional.

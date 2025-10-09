@@ -1,48 +1,35 @@
- <h1 align="center">Laporan Praktikum Modul 2 <br> Pengenalan CPP Bag 2 </h1>
+ <h1 align="center">Laporan Praktikum Modul 3&4 <br> ADT & SLL </h1>
 <p align="center">Raden Aurel Aditya Kusumawaningyun - 103112430267</p>
 
-## Dasar Teori
-Dalam studi Struktur Data, pondasi dimulai dengan memahami Array sebagai koleksi data sejenis yang tersimpan secara berurutan dan diakses melalui indeks. Konsep ini meluas hingga Array Dua Dimensi yang representasinya menyerupai tabel. Keterorganisasian data ini erat kaitannya dengan bagaimana program mengelola Memori, di mana setiap variabel memiliki alamat unik. Untuk berinteraksi langsung dengan alamat tersebut, kita menggunakan variabel Pointer, yang secara spesifik bertugas menyimpan alamat memori variabel lain. Memahami Pointer sangat esensial karena ia menjadi kunci dalam mekanisme pelewatan parameter pada fungsi yaitu ketika menggunakan Pemanggilan dengan Nilai, nilai variabel asli tidak akan berubah di luar fungsi. Namun, melalui Pemanggilan dengan Pointer atau Referensi, yang pada dasarnya melewatkan alamat variabel, fungsi memiliki kemampuan untuk mengubah nilai variabel aktual yang berada di luar cakupannya. Konsep-konsep dasar ini merupakan landasan kritis dalam pemrograman modular, yang bertujuan agar kode menjadi lebih terstruktur, mudah diuji, dan reusable.
+## Dasar Teori Modul 3
+Abstract Data Type (ADT) adalah landasan konseptual dalam pemrograman yang mendefinisikan suatu TYPE struktur data beserta serangkaian PRIMITIF atau operasi dasar yang dapat dilakukan terhadapnya. Konsepnya berfokus pada "apa" yang dilakukan oleh data dan bukan "bagaimana" ia diimplementasikan secara internal, menjadikannya definisi yang Statik. Abstract Data Type yang lengkap mencakup delapan kelompok primitif, mulai dari Konstruktor untuk membentuk nilai type baru, Selector untuk mengakses komponen, Destruktor atau Dealokator untuk membebaskan memori, hingga operator relasional dan aritmatika. Dalam praktikum ini, prinsip Information Hiding dari ADT diwujudkan dengan memisahkan implementasi menjadi dua modul utama yaitu Spesifikasi (.h) yang berisi deklarasi type dan prototipe fungsi, dan Realisasi (.c atau .cpp) yang berisi kode program aktual dari primitif-primitif tersebut.
 
-## Guided
+## Dasar Teori Modul 4
+Linked List merupakan salah satu struktur data dinamis yang sangat penting, direpresentasikan sebagai serangkaian elemen data yang saling berkait dan bersifat fleksibel karena dapat tumbuh atau mengerut sesuai kebutuhan memori. Dalam implementasinya, Linked List memanfaatkan Pointer untuk menghubungkan setiap elemen. Singly Linked List (SLL) adalah model paling sederhana yang hanya menggunakan satu arah pointer, memungkinkan pembacaan hanya ke arah maju. Setiap elemen atau node dalam SLL terdiri dari dua bagian yaitu Data dan Pointer next yang menunjuk ke alamat node berikutnya, di mana node terakhir akan menunjuk ke NULL atau Nil. Operasi dasar SLL, yang disebut primitif, mencakup CreateList atau inisialisasi, alokasi/dealokasi memori, berbagai metode Insert seperti: First, Last, After, operasi Delete seperti: First, Last, After, dan View/printInfo. Semua primitif ini diorganisir ke dalam file .h dan .cpp sesuai dengan kaidah ADT, memastikan pemisahan antara spesifikasi dan implementasi.
+
+## Guided Modul 3
 
 ### soal 1
-Call By Pointer
+mahasiswa.h
 ```go
 #include <iostream>
+#include "mahasiswa.h"
 using namespace std;
 
-void tukaryagesya (int *px, int *py); 
 
 int main()
 {
-    int a = 10, b = 20;
-
-    cout << "Pas Sebelum ditukar: a = " << a << ", b = " << b << endl;
-    
-    tukaryagesya(&a, &b); 
-    
-    cout << "Pas Setelah ditukar: a = " << a << ", b = " << b << endl;
-    
+    mahasiswa mhs;
+    inputMhs(mhs);
+    cout << "rata-rata = " << rata2(mhs);
     return 0;
 }
-
-
-void tukaryagesya(int *px, int *py)
-{
-    
-    int temp = *px; 
-    
-    
-    *px = *py; 
-    
-    *py = temp; 
-}
-
 ```
+> ![Screenshot bagian x](Output2/Guided1.png)
+
 penjelasan singkat : 
 
-Kode C++ ini mendemonstrasikan mekanisme Pemanggilan dengan Pointer untuk menukar nilai dua variabel di luar fungsi utama. Intinya, saat fungsi tukar &a, &b dipanggil, ia tidak menerima nilai variabel 10 dan 20, melainkan alamat memori variabel a dan b. Di dalam fungsi tukar, operator Dereference (*) digunakan untuk mengakses lokasi memori asli tersebut, sehingga operasi penukaran *px = *py; dan *py = temp secara langsung memodifikasi nilai a dan b di dalam memori. Dengan cara ini, nilai variabel a dan b benar-benar tertukar setelah fungsi selesai dieksekusi, menghasilkan output a = 20, b = 10.
+Kode C++ ini mendemonstrasikan bagaimana konsep Abstract Data Type (ADT) diimplementasikan secara terstruktur untuk menerapkan prinsip Penyembunyian Informasi (Information Hiding). Intinya, ADT mahasiswa dibagi menjadi tiga komponen file logis: mahasiswa.h berfungsi sebagai kontrak ADT yang mendefinisikan struct dan mendeklarasikan (prototipe) fungsi-fungsi primitif (inputMhs, rata2), hanya menyatakan apa yang disediakan oleh ADT. mahasiswa.cpp menjadi badan (body) yang menyediakan realisasi kode aktual dari primitif tersebut, menjelaskan bagaimana operasi input dan perhitungan dilakukan. Sementara itu, main.cpp bertindak sebagai program driver yang menggunakan ADT dengan hanya perlu menyertakan file .h dan memanggil fungsi secara langsung, tanpa perlu mengetahui detail implementasi di file .cpp, yang merupakan inti dari arsitektur modular yang bersih.
 
 > Output
 > ![Screenshot bagian x](Output2/Guided1.png)

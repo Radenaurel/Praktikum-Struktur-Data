@@ -244,7 +244,7 @@ void tampil_pelajaran(const pelajaran& pel);
 
 #endif 
 ```
-> ![Screenshot bagian x](output3/ungaided.h.png)
+> ![Screenshot bagian x](output3/ungaided2.h.png)
 
 ungaided2.cpp
 ```go
@@ -264,7 +264,7 @@ void tampil_pelajaran(const pelajaran& pel) {
     cout << "nilai          : " << pel.kodeMapel << endl;
 }
 ```
-> ![Screenshot bagian x](output3/ungaided1.cpp.png)
+> ![Screenshot bagian x](output3/ungaided2.cpp.png)
 
 mainungaided2.cpp
 ```go
@@ -286,12 +286,162 @@ int main() {
 }
 ```
 > Output
-> ![Screenshot bagian x](output3/mainungaided1.cpp.png)
+> ![Screenshot bagian x](output3/mainugaided2.cpp.png)
 > > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan singkat : 
 
-Kode C++ ini adalah demonstrasi sukses implementasi Abstract Data Type (ADT) untuk mengelola sekumpulan data mahasiswa dalam sebuah array. Intinya, kami memisahkan tanggung jawab kode secara ketat: Mahasiswa.h mendefinisikan type dan primitif, sementara Mahasiswa.cpp menyediakan realisasi fungsi seperti hitungNilaiAkhir (menggunakan rumus 0.3⋅UTS+0.4⋅UAS+0.3⋅Tugas). Program utama (main.cpp) berfungsi sebagai driver yang mengelola array dan loop input, dan yang terpenting, ia menyertakan mekanisme pembersihan input buffer (cin.ignore) secara strategis. Keberhasilan ini tidak hanya membuktikan implementasi rumus yang benar, tetapi juga menjamin keandalan user input campuran string dan numerik di dalam loop yang berkelanjutan, menghasilkan output tabel nilai yang terstruktur dan akurat.
+Kode C++ ini adalah implementasi murni dari Abstract Data Type (ADT) pelajaran, yang secara efisien mengelola type data terstruktur. Intinya, kode ini menggunakan fungsi konstruktor create_pelajaran untuk menugaskan pembuatan dan inisialisasi objek pelajaran baru. Dengan mendefinisikan function tersebut untuk menerima nama dan kode mapel lalu mengembalikannya sebagai objek utuh, proses ini menjamin bahwa setiap objek pelajaran selalu tercipta dalam kondisi valid, sesuai prinsip ADT. Seluruh proses ini diorganisasi dengan memisahkan Spesifikasi (.h) dan Realisasi (.cpp), memastikan penggunaan yang bersih dan modular melalui fungsi tampil_pelajaran pada driver utama.
+
+### soal 3
+
+Buatlah program dengan ketentuan :
+- 2 buah array 2D integer berukuran 3x3 dan 2 buah pointer integer
+- fungsi/prosedur yang menampilkan isi sebuah array integer 2D
+- fungsi/prosedur yang akan menukarkan isi dari 2 array integer 2D pada posisi tertentu
+STRUKTUR DATA 35
+- fungsi/prosedur yang akan menukarkan isi dari variabel yang ditunjuk oleh 2 buah
+pointer
+
+ungaided3.h
+```go
+#ifndef UNGAIDED3_H_INCLUDED
+#define UNGAIDED3_H_INCLUDED
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+const int SIZE = 3;
+
+void tampilkanArray(const int arr[][SIZE], const string& nama);
+void tukarIsiArray(int arrA[][SIZE], int arrB[][SIZE], int baris, int kolom);
+void tukarNilaiPointer(int *ptr1, int *ptr2);
+
+#endif 
+```
+> ![Screenshot bagian x](output3/ungaided2.h.png)
+
+ungaided3.cpp
+```go
+#include "ungaided3.h"
+
+int main() {
+
+    int array1[SIZE][SIZE] = {
+        {10, 20, 30},
+        {40, 50, 60},
+        {70, 80, 90}
+    };
+    
+    int array2[SIZE][SIZE] = {
+        {11, 22, 33},
+        {44, 55, 66},
+        {77, 88, 99}
+    };
+
+    int valA = 100;
+    int valB = 200;
+
+    int *ptrA = &valA;
+    int *ptrB = &valB;
+
+  
+    cout << "DEMONSTRASI ARRAY 2D, POINTER, DAN FUNGSI SWAP" << endl;
+    
+
+    // --- BAGIAN A: Menampilkan Array Awal ---
+    tampilkanArray(array1, "Array 1 (Awal)");
+    tampilkanArray(array2, "Array 2 (Awal)");
+
+    // --- BAGIAN B: Menukar Isi Array 2D pada Posisi Tertentu ---
+    tukarIsiArray(array1, array2, 1, 1); 
+
+    // Menampilkan Array Setelah Pertukaran
+    tampilkanArray(array1, "Array 1 (Setelah Tukar)");
+    tampilkanArray(array2, "Array 2 (Setelah Tukar)");
+    
+    // --- BAGIAN C: Menukar Isi Variabel yang Ditunjuk oleh Pointer ---
+    
+    cout << "DEMONSTRASI TUKAR NILAI VIA POINTER (Call by Reference)" << endl;
+  
+
+    cout << "Nilai Awal (valA=" << valA << ", valB=" << valB << ")" << endl;
+    cout << "Nilai yang ditunjuk: *ptrA=" << *ptrA << ", *ptrB=" << *ptrB << endl;
+
+    tukarNilaiPointer(ptrA, ptrB);
+
+    cout << "\nOperasi: tukarNilaiPointer(ptrA, ptrB) dieksekusi..." << endl;
+    
+    cout << "Nilai Akhir (valA=" << valA << ", valB=" << valB << ")" << endl;
+    cout << "Nilai yang ditunjuk: *ptrA=" << *ptrA << ", *ptrB=" << *ptrB << endl;
+
+    return 0;
+}
+```
+> ![Screenshot bagian x](output3/ungaided2.cpp.png)
+
+mainungaided3.cpp
+```go
+##include "ungaided3.h"
+
+int main() {
+
+    int array1[SIZE][SIZE] = {
+        {10, 20, 30},
+        {40, 50, 60},
+        {70, 80, 90}
+    };
+    
+    int array2[SIZE][SIZE] = {
+        {11, 22, 33},
+        {44, 55, 66},
+        {77, 88, 99}
+    };
+
+    int valA = 100;
+    int valB = 200;
+
+    int *ptrA = &valA;
+    int *ptrB = &valB;
+
+  
+    cout << "DEMONSTRASI ARRAY 2D, POINTER, DAN FUNGSI SWAP" << endl;
+    
+    tampilkanArray(array1, "Array 1 (Awal)");
+    tampilkanArray(array2, "Array 2 (Awal)");
+
+    tukarIsiArray(array1, array2, 1, 1); 
+
+    tampilkanArray(array1, "Array 1 (Setelah Tukar)");
+    tampilkanArray(array2, "Array 2 (Setelah Tukar)");
+    
+    
+    cout << "DEMONSTRASI TUKAR NILAI VIA POINTER (Call by Reference)" << endl;
+  
+
+    cout << "Nilai Awal (valA=" << valA << ", valB=" << valB << ")" << endl;
+    cout << "Nilai yang ditunjuk: *ptrA=" << *ptrA << ", *ptrB=" << *ptrB << endl;
+
+    tukarNilaiPointer(ptrA, ptrB);
+
+    cout << "\nOperasi: tukarNilaiPointer(ptrA, ptrB) dieksekusi..." << endl;
+    
+    cout << "Nilai Akhir (valA=" << valA << ", valB=" << valB << ")" << endl;
+    cout << "Nilai yang ditunjuk: *ptrA=" << *ptrA << ", *ptrB=" << *ptrB << endl;
+
+    return 0;
+}
+```
+> Output
+> ![Screenshot bagian x](output3/mainugaided2.cpp.png)
+> > Berikut SS VS Code dari Program Soal No 1
+
+penjelasan singkat : 
+
+Kode C++ ini adalah implementasi murni dari Abstract Data Type (ADT) pelajaran, yang secara efisien mengelola type data terstruktur. Intinya, kode ini menggunakan fungsi konstruktor create_pelajaran untuk menugaskan pembuatan dan inisialisasi objek pelajaran baru. Dengan mendefinisikan function tersebut untuk menerima nama dan kode mapel lalu mengembalikannya sebagai objek utuh, proses ini menjamin bahwa setiap objek pelajaran selalu tercipta dalam kondisi valid, sesuai prinsip ADT. Seluruh proses ini diorganisasi dengan memisahkan Spesifikasi (.h) dan Realisasi (.cpp), memastikan penggunaan yang bersih dan modular melalui fungsi tampil_pelajaran pada driver utama.
 
 
 

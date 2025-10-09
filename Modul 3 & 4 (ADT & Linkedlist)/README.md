@@ -220,127 +220,67 @@ Kode C++ ini adalah demonstrasi sukses implementasi Abstract Data Type (ADT) unt
 
 Buatlah ADT pelajaran sebagai berikut di dalam file “pelajaran.h”:
 
+> ![Screenshot bagian x](output3/soalke2.png)
 
 
-ungaided1.h
+ungaided2.h
 ```go
-#ifndef MAHASISWA_H_INCLUDED
-#define MAHASISWA_H_INCLUDED
+#ifndef UNGAIDED2_H_INCLUDED 
+#define UNGAIDED2_H_INCLUDED 
 
 #include <iostream>
 #include <string>
-#include <iomanip>
 
 using namespace std;
 
-struct Mahasiswa {
-    string nama;
-    string nim;
-    int uts;
-    int uas;
-    int tugas;
-    float nilaiAkhir;
+struct pelajaran {
+    string namaMapel;
+    string kodeMapel;
 };
+ 
+pelajaran create_pelajaran(string namapel, string kodepel);
 
-const int MAX_MHS = 10;
-
-
-void inputDataMhs(Mahasiswa &mhs);
-
-float hitungNilaiAkhir(const Mahasiswa &mhs);
-
-void tampilDataMhs(const Mahasiswa &mhs);
+void tampil_pelajaran(const pelajaran& pel);
 
 #endif 
 ```
-> ![Screenshot bagian x](output3/ungaided1.h.png)
+> ![Screenshot bagian x](output3/ungaided.h.png)
 
-ungaided1.cpp
+ungaided2.cpp
 ```go
-#include "ungaided1.h"
+#include "ungaided2.h" 
 #include <iostream>
-#include <limits> 
 
-void inputDataMhs(Mahasiswa &mhs) {
-   
-    cout << "  Input Nama : ";
-    getline(cin >> ws, mhs.nama); 
-    
-    cout << "  Input NIM  : ";
-    getline(cin, mhs.nim); 
-
-    cout << "  Input UTS  : ";
-    cin >> mhs.uts;
-    cout << "  Input UAS  : ";
-    cin >> mhs.uas;
-    cout << "  Input Tugas: ";
-    cin >> mhs.tugas;
-    
-    mhs.nilaiAkhir = hitungNilaiAkhir(mhs);
+pelajaran create_pelajaran(string namapel, string kodepel) {
+    pelajaran p;
+    p.namaMapel = namapel;
+    p.kodeMapel = kodepel;
+    return p; 
 }
 
-float hitungNilaiAkhir(const Mahasiswa &mhs) {
-    float na = (0.3f * mhs.uts) + (0.4f * mhs.uas) + (0.3f * mhs.tugas);
-    return na;
-}
-
-void tampilDataMhs(const Mahasiswa &mhs) {
-    cout << left << setw(20) << mhs.nama 
-         << setw(15) << mhs.nim
-         << setw(8) << mhs.uts
-         << setw(8) << mhs.uas
-         << setw(8) << mhs.tugas
-         << fixed << setprecision(2) << mhs.nilaiAkhir << endl;
+void tampil_pelajaran(const pelajaran& pel) {
+  
+    cout << "nama pelajaran : " << pel.namaMapel << endl;
+    cout << "nilai          : " << pel.kodeMapel << endl;
 }
 ```
 > ![Screenshot bagian x](output3/ungaided1.cpp.png)
 
-mainungaided1.cpp
+mainungaided2.cpp
 ```go
-#include "ungaided1.h"
+#include "ungaided2.h" 
 #include <limits> 
+
+
+using namespace std;
 
 int main() {
     
-    
-    Mahasiswa daftarMhs[MAX_MHS];
-    int jumlahMhs = 0;
-    char lanjut;
+    string namapel = "struktur data";
+    string kodepel = "STD";
+    pelajaran pel = create_pelajaran(namapel, kodepel); 
 
-    cout << "PROGRAM INPUT DAN NILAI AKHIR MAHASISWA" << endl;
-   
-    do {
-        if (jumlahMhs >= MAX_MHS) {
-            cout << "Batas maksimum mahasiswa (" << MAX_MHS << ") telah tercapai." << endl;
-            break;
-        }
-
-        cout << "\n--- Input Mahasiswa Ke-" << jumlahMhs + 1 << " ---" << endl;
-  
-        inputDataMhs(daftarMhs[jumlahMhs]); 
-
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        jumlahMhs++;
-
-        cout << "Lanjut input data? (yak/tidak): ";
-        cin >> lanjut;
-    
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
-        
-    } while (lanjut == 'y' || lanjut == 'Y');
-
-    cout << "DAFTAR NILAI AKHIR MAHASISWA (" << jumlahMhs << " dari " << MAX_MHS << ")" << endl;
-    cout << left << setw(20) << "NAMA" 
-         << setw(15) << "NIM"
-         << setw(8) << "UTS"
-         << setw(8) << "UAS"
-         << setw(8) << "TUGAS"
-         << "NILAI AKHIR" << endl;
-    
-
-    for (int i = 0; i < jumlahMhs; ++i) {
-        tampilDataMhs(daftarMhs[i]); 
-    }
+    tampil_pelajaran(pel); 
 
     return 0;
 }

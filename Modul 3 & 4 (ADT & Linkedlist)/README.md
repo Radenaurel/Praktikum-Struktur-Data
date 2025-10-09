@@ -12,6 +12,46 @@ Linked List merupakan salah satu struktur data dinamis yang sangat penting, dire
 ### soal 1
 mahasiswa.h
 ```go
+#ifndef MAHASISWA_H_ICLUDED
+#define MAHASISWA_H_ICLUDED
+
+struct mahasiswa
+{
+   char nim [10];
+   int nilai1, nilai2; /* data */
+};
+
+void inputMhs(mahasiswa &m);
+float rata2(mahasiswa m);
+#endif
+
+```
+> ![Screenshot bagian x](output3/guided1.1.png)
+
+mahasiswa.cpp
+```go
+#include "mahasiswa.h"
+#include <iostream>
+using namespace std;
+
+void inputMhs(mahasiswa &m)
+{
+    cout << "input nama = ";
+    cin >> (m).nim;
+    cout << "input nilai = ";
+    cin >> (m).nilai1;
+    cout << "input nilai2 = ";
+    cin >> (m).nilai2;
+}
+float rata2(mahasiswa m)
+{
+    return float(m.nilai1 + m.nilai2) /2;
+}
+```
+> ![Screenshot bagian x](output3/guided1.2.png)
+
+main.cpp
+```go
 #include <iostream>
 #include "mahasiswa.h"
 using namespace std;
@@ -24,168 +64,150 @@ int main()
     cout << "rata-rata = " << rata2(mhs);
     return 0;
 }
+
 ```
-> ![Screenshot bagian x](Output2/Guided1.png)
 
 penjelasan singkat : 
 
-Kode C++ ini mendemonstrasikan bagaimana konsep Abstract Data Type (ADT) diimplementasikan secara terstruktur untuk menerapkan prinsip Penyembunyian Informasi (Information Hiding). Intinya, ADT mahasiswa dibagi menjadi tiga komponen file logis: mahasiswa.h berfungsi sebagai kontrak ADT yang mendefinisikan struct dan mendeklarasikan (prototipe) fungsi-fungsi primitif (inputMhs, rata2), hanya menyatakan apa yang disediakan oleh ADT. mahasiswa.cpp menjadi badan (body) yang menyediakan realisasi kode aktual dari primitif tersebut, menjelaskan bagaimana operasi input dan perhitungan dilakukan. Sementara itu, main.cpp bertindak sebagai program driver yang menggunakan ADT dengan hanya perlu menyertakan file .h dan memanggil fungsi secara langsung, tanpa perlu mengetahui detail implementasi di file .cpp, yang merupakan inti dari arsitektur modular yang bersih.
+Kode C++ ini mendemonstrasikan bagaimana konsep Abstract Data Type (ADT) diimplementasikan secara terstruktur untuk menerapkan prinsip Penyembunyian Informasi. Intinya, ADT mahasiswa dibagi menjadi tiga komponen file logis yaitu mahasiswa.h berfungsi sebagai kontrak ADT yang mendefinisikan struct dan mendeklarasikan prototipe juga fungsi-fungsi primitif seperti inputMhs, rata2, hanya menyatakan apa yang disediakan oleh ADT. mahasiswa.cpp menjadi badan yang menyediakan realisasi kode aktual dari primitif tersebut, menjelaskan bagaimana operasi input dan perhitungan dilakukan. Sementara itu, main.cpp bertindak sebagai program driver yang menggunakan ADT dengan hanya perlu menyertakan file .h dan memanggil fungsi secara langsung, tanpa perlu mengetahui detail implementasi di file .cpp, yang merupakan inti dari arsitektur modular yang bersih.
 
 > Output
-> ![Screenshot bagian x](Output2/Guided1.png)
+> ![Screenshot bagian x](output3/guided1.3.png)
 > Berikut SS VS Code dari Program Soal No 1
 
-### soal 2
-Call By Reference
+## Unguided Modul 3
 
+### soal 1
+
+Buat program yang dapat menyimpan data mahasiswa (max. 10) ke dalam sebuah array
+dengan field nama, nim, uts, uas, tugas, dan nilai akhir. Nilai akhir diperoleh dari FUNGSI
+dengan rumus 0.3*uts+0.4*uas+0.3*tugas.
+
+ungaided1.h
 ```go
+#ifndef MAHASISWA_H_INCLUDED
+#define MAHASISWA_H_INCLUDED
+
 #include <iostream>
+#include <string>
+#include <iomanip>
+
 using namespace std;
 
+struct Mahasiswa {
+    string nama;
+    string nim;
+    int uts;
+    int uas;
+    int tugas;
+    float nilaiAkhir;
+};
 
-void tukar(int &x, int &y); 
+const int MAX_MHS = 10;
 
-int main()
-{
-    int a = 10, b = 20;
-    
-    cout << "Sebelum ditukar: a = " << a << ", b = " << b << endl;
-    
 
-    tukar(a, b); 
+void inputDataMhs(Mahasiswa &mhs);
+
+float hitungNilaiAkhir(const Mahasiswa &mhs);
+
+void tampilDataMhs(const Mahasiswa &mhs);
+
+#endif 
+```
+> ![Screenshot bagian x](output3/guided1.1.png)
+
+ungaided1.cpp
+```go
+#include "ungaided1.h"
+#include <iostream>
+#include <limits> 
+
+void inputDataMhs(Mahasiswa &mhs) {
+   
+    cout << "  Input Nama : ";
+    getline(cin >> ws, mhs.nama); 
     
-    cout << "Setelah ditukar: a = " << a << ", b = " << b << endl;
+    cout << "  Input NIM  : ";
+    getline(cin, mhs.nim); 
+
+    cout << "  Input UTS  : ";
+    cin >> mhs.uts;
+    cout << "  Input UAS  : ";
+    cin >> mhs.uas;
+    cout << "  Input Tugas: ";
+    cin >> mhs.tugas;
     
-    return 0;
+    mhs.nilaiAkhir = hitungNilaiAkhir(mhs);
 }
 
+float hitungNilaiAkhir(const Mahasiswa &mhs) {
+    float na = (0.3f * mhs.uts) + (0.4f * mhs.uas) + (0.3f * mhs.tugas);
+    return na;
+}
 
-void tukar(int &x, int &y) 
-{
-    int temp = x;
-    x = y;
-    y = temp;
+void tampilDataMhs(const Mahasiswa &mhs) {
+    cout << left << setw(20) << mhs.nama 
+         << setw(15) << mhs.nim
+         << setw(8) << mhs.uts
+         << setw(8) << mhs.uas
+         << setw(8) << mhs.tugas
+         << fixed << setprecision(2) << mhs.nilaiAkhir << endl;
 }
 ```
-penjelasan singkat : 
+> ![Screenshot bagian x](output3/guided1.1.png)
 
-Kode C++ ini mendemonstrasikan mekanisme Pemanggilan dengan Referensi untuk menukar nilai dua variabel yang berada di luar fungsi utama. Intinya, saat fungsi tukar a, b dipanggil, ia tidak menyalin nilai variabel a dan b; melainkan, melalui simbol reference (&) pada parameter formalnya, variabel x dan y menjadi alias yang merujuk pada variabel a dan b di lokasi memori yang sama. Di dalam fungsi tukar, semua operasi penukaran x = y; dan y = temp; secara langsung memodifikasi nilai a dan b di dalam memori. Dengan cara ini, nilai variabel a dan b benar-benar tertukar setelah fungsi selesai dieksekusi, menghasilkan output a = 20, b = 10.
-
-> Output
-> ![Screenshot bagian x](Output2/Guided2.png)
-> Berikut SS VS Code dari Program Soal No 2
-
-
-
-
-## Unguided
-
-### Soal 1
-
-Buatlah sebuah program untuk melakukan transpose pada sebuah matriks persegi berukuran 3x3. Operasi transpose adalah mengubah baris menjadi kolom dan sebaliknya. Inisialisasi matriks awal di dalam kode, kemudian buat logika untuk melakukan transpose dan simpan hasilnya ke dalam matriks baru. Terakhir, tampilkan matriks awal dan matriks hasil transpose.
-
-Contoh Output:
-
-Matriks Awal:
-1 2 3
-4 5 6
-7 8 9
-
-Matriks Hasil Transpose:
-1 4 7
-2 5 8
-3 6 9
-
-
+mainungaided1.cpp
 ```go
-#include <iostream>
-using namespace std;
-
-const int uMatriks = 3;
-
-void tampilkanMatriks(int matriks[uMatriks][uMatriks]) {
-    for (int i = 0; i < uMatriks; i++) {
-        for (int j = 0; j < uMatriks; j++) {
-            cout << matriks[i][j] << " ";
-        }
-        cout << endl; 
-    }
-}
+#include "ungaided1.h"
+#include <limits> 
 
 int main() {
+    
+    
+    Mahasiswa daftarMhs[MAX_MHS];
+    int jumlahMhs = 0;
+    char lanjut;
+
+    cout << "PROGRAM INPUT DAN NILAI AKHIR MAHASISWA" << endl;
+   
+    do {
+        if (jumlahMhs >= MAX_MHS) {
+            cout << "Batas maksimum mahasiswa (" << MAX_MHS << ") telah tercapai." << endl;
+            break;
+        }
+
+        cout << "\n--- Input Mahasiswa Ke-" << jumlahMhs + 1 << " ---" << endl;
   
-    int matriksAwal[uMatriks][uMatriks] = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9}
-    };
+        inputDataMhs(daftarMhs[jumlahMhs]); 
 
-    int matriksTranspose[uMatriks][uMatriks];
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        jumlahMhs++;
 
-    for (int i = 0; i < uMatriks; i++) {
-        for (int j = 0; j < uMatriks; j++) {
-            matriksTranspose[j][i] = matriksAwal[i][j];
-        }
+        cout << "Lanjut input data? (yak/tidak): ";
+        cin >> lanjut;
+    
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+        
+    } while (lanjut == 'y' || lanjut == 'Y');
+
+    cout << "DAFTAR NILAI AKHIR MAHASISWA (" << jumlahMhs << " dari " << MAX_MHS << ")" << endl;
+    cout << left << setw(20) << "NAMA" 
+         << setw(15) << "NIM"
+         << setw(8) << "UTS"
+         << setw(8) << "UAS"
+         << setw(8) << "TUGAS"
+         << "NILAI AKHIR" << endl;
+    
+
+    for (int i = 0; i < jumlahMhs; ++i) {
+        tampilDataMhs(daftarMhs[i]); 
     }
 
-    cout << "Matriks Awal:\n";
-    tampilkanMatriks(matriksAwal);
-
-    cout << "\nMatriks Hasil Transpose:\n";
-    tampilkanMatriks(matriksTranspose);
-
     return 0;
 }
 ```
+> ![Screenshot bagian x](output3/guided1.1.png)
 
-> Output
-> ![Screenshot bagian x](Output2/UngaidedPertama.png)
-> Ss VS Code Soal Unguided no 1
-
-
-Penjelasan Singkat:
-
-Kode C++ ini mendemonstrasikan bagaimana kita bisa membuat program yang efisien untuk melakukan operasi Transpose Matriks berukuran 3×3 menggunakan Array Dua Dimensi. Program ini bertujuan untuk mengubah baris menjadi kolom dan sebaliknya pada matriksAwal dan menyimpan hasilnya pada matriksTranspose. Kode ini juga menggunakan Prosedur tampilkanMatriks (void) untuk mencetak isi matriks, yang mendukung konsep modularitas dan membuat kode utama lebih rapi dan mudah digunakan kembali . Secara keseluruhan, kode ini membuktikan bahwa operasi transpose dalam pemrograman hanyalah masalah membalik posisi indeks setiap elemen data saat disalin dari array sumber ke array tujuan.
- 
-### Soal 2
-
-Buatlah program yang menunjukkan penggunaan call by reference. Buat sebuah prosedur bernama kuadratkan yang menerima satu parameter integer secara referensi (&). Prosedur ini akan mengubah nilai asli variabel yang dilewatkan dengan nilai kuadratnya. Tampilkan nilai variabel di main() sebelum dan sesudah memanggil prosedur untuk membuktikan perubahannya. 
-
-Contoh Output:
-
-Nilai awal: 5
-
-Nilai setelah dikuadratkan: 25
-
-```go
-#include <iostream>
-using namespace std;
-
-void kuadratkan(int &bilangan); 
-
-int main() {
-    int nilai = 5;
-
-    cout << "Nilai awal: " << nilai << endl;
-
-    kuadratkan(nilai);
-
-    cout << "Nilai setelah dikuadratkan: " << nilai << endl;
-
-    return 0;
-}
-
-void kuadratkan(int &bilangan) {
-    bilangan = bilangan * bilangan;
-}
-```
-
-> Output
-> ![Screenshot bagian x](Output2/Ungaided2.png)
-
-penjelasan singkat : 
-
-Kode C++ ini mendemonstrasikan mekanisme Pemanggilan dengan Referensi untuk menukar nilai variabel a dan b di luar fungsi utama. Fungsi tukar didefinisikan dengan menggunakan simbol & pada parameter formalnya int &x, int &y, yang menyebabkan x dan y menjadi alias untuk variabel asli a dan b. Saat tukar a, b; dipanggil, semua operasi penukaran yang terjadi pada x dan y di dalam fungsi x = y; dan y = temp; secara langsung memengaruhi dan mengubah nilai variabel asli di lokasi memori yang sama. Hasilnya, nilai a dan b berhasil tertukar secara permanen a = 20, b = 10. Mekanisme ini adalah cara yang efisien untuk memodifikasi data sumber di luar fungsi tanpa perlu menggunakan operator pointer "*".
 
 
 ## Referensi

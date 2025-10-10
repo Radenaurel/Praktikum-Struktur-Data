@@ -287,7 +287,7 @@ int main() {
 ```
 > Output
 > ![Screenshot bagian x](output3/mainugaided2.cpp.png)
-> > Berikut SS VS Code dari Program Soal No 1
+> > Berikut SS VS Code dari Program Soal No 2
 
 penjelasan singkat : 
 
@@ -411,7 +411,7 @@ int main() {
 ```
 > Output
 > ![Screenshot bagian x](output3/mainungaided3.cpp.png)
-> > Berikut SS VS Code dari Program Soal No 1
+> > Berikut SS VS Code dari Program Soal No 3
 
 > Output
 > ![Screenshot bagian x](output3/terminalungaided3.png)
@@ -621,7 +621,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](output3/guide.png)
+> ![Screenshot bagian x](output3/guided4.1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 
@@ -781,7 +781,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](output3/guided.3.png)
+> ![Screenshot bagian x](output3/ungaided4.1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 
@@ -888,8 +888,8 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](output3/guidd1.3.png)
-> Berikut SS VS Code dari Program Soal No 1
+> ![Screenshot bagian x](output3/ungaided4.2.png)
+> Berikut SS VS Code dari Program Soal No 2
 
 penjelasan: 
 
@@ -897,18 +897,15 @@ Kode C++ ini adalah demonstrasi fungsional dari implementasi algoritma Iterative
 
 
 ## Referensi
-Lippman, S. B., Lajoie, J., & Moo, B. E. (2012). C++ Primer (5th ed.). Addison-Wesley Professional.
+Carrano, F. M., & Prichard, J. (2018). Data abstraction & problem solving with C++: Walls and mirrors (7th ed.). Pearson Education.
 
-Stroustrup, B. (1994). The Design and Evolution of C++. Addison-Wesley Publishing Company.
+Goodrich, M. T., Tamassia, R., & Mount, D. M. (2011). Data structures and algorithms in C++. John Wiley & Sons.ny.
 
-Stroustrup, B. (2013). The C++ Programming Language (4th ed.). Addison-Wesley Professional.
+Telkom University. (n.d.). Modul 3 & 4 Abstract Data Type & SIngle Linked List. Fakultas Informatika.
 
-Modul Praktikum & Institusional
-Telkom University. (n.d.). Modul 2 Pengenalan Bahasa C++ (Bagian Kedua). Fakultas Informatika.
+The C++ Resources Network. (n.d.). C++ Tutorials. Retrieved October 10, 2025, from https://www.cplusplus.com/doc/tutorial/
 
-The C++ Resources Network. (n.d.). C++ Tutorials. Retrieved October 3, 2025, from https://www.cplusplus.com/doc/tutorial/
+The C++ Standard Library. (n.d.). C++ reference. Retrieved October 10, 2025, from https://en.cppreference.com/w/cpp/
 
-The C++ Standard Library. (n.d.). C++ reference. Retrieved October 3, 2025, from https://en.cppreference.com/w/cpp/
-
-Microsoft. (n.d.). struct (C++). Microsoft Learn. Retrieved October 3, 2025, from https://learn.microsoft.com/en-us/cpp/cpp/struct-cpp
+Microsoft. (n.d.). struct (C++). Microsoft Learn. Retrieved October 10, 2025, from https://learn.microsoft.com/en-us/cpp/cpp/struct-cpp
 

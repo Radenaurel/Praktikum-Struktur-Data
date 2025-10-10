@@ -421,6 +421,481 @@ penjelasan singkat :
 
 Kode C++ ini adalah demonstrasi fungsional dari manipulasi Array 2D dan Pointer, menekankan pada konsep Call by Reference untuk operasi pertukaran data. Intinya, fungsi tukarIsiArray memungkinkan modifikasi langsung pada elemen array (array1 dan array2) pada posisi tertentu karena array secara alami dilewatkan sebagai referensi, menjamin perubahan elemen bersifat permanen. Sementara itu, fungsi tukarNilaiPointer menunjukkan esensi dari Pemanggilan dengan Pointer: ia menerima alamat memori dua variabel (valA dan valB) dan menggunakan operator Dereference (*) untuk mengakses dan menukar nilai yang tersimpan di lokasi memori asli tersebut. Hasilnya, pertukaran data pada array dan pertukaran nilai valA dan valB melalui pointer berhasil dilakukan secara permanen di luar fungsi utama.
 
+
+## Guided Modul 4
+
+### soal 1
+
+```go
+#include <iostream>
+using namespace std;
+
+// Struktur Node
+struct Node {
+    int data;
+    Node* next;
+};
+Node* head = nullptr;
+
+// Fungsi untuk membuat node baru
+Node* createNode(int data) {
+    Node* newNode = new Node();
+    newNode->data = data;
+    newNode->next = nullptr;
+    return newNode;
+}
+
+// ========== INSERT DEPAN FUNCTION (Penambahan) ==========
+void insertDepan(int data) {
+    Node* newNode = createNode(data);
+    // Logika Insert First: Node baru menunjuk ke head lama, lalu head menunjuk ke Node baru.
+    newNode->next = head;
+    head = newNode;
+    cout << "Data " << data << " berhasil ditambahkan di depan.\n";
+}
+
+void insertBelakang(int data) {
+    Node* newNode = createNode(data);
+    if (head == nullptr) {
+        head = newNode;
+    } else {
+        Node* temp = head;
+        while (temp->next != nullptr) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
+    cout << "Data " << data << " berhasil ditambahkan di belakang.\n";
+}
+
+void insertSetelah(int target, int dataBaru) {
+    Node* temp = head;
+    while (temp != nullptr && temp->data != target) {
+        temp = temp->next;
+    }
+
+    if (temp == nullptr) {
+        cout << "Data " << target << " tidak ditemukan!\n";
+    } else {
+        Node* newNode = createNode(dataBaru);
+        // Logika Insert After: Sambungkan newNode ke temp->next, lalu temp ke newNode
+        newNode->next = temp->next;
+        temp->next = newNode;
+        cout << "Data " << dataBaru << " berhasil disisipkan setelah " << target << ".\n";
+    }
+}
+
+// ========== DELETE FUNCTION ==========
+void hapusNode(int data) {
+    if (head == nullptr) {
+        cout << "List kosong!\n";
+        return;
+    }
+
+    Node* temp = head;
+    Node* prev = nullptr;
+
+    // Jika data di node pertama (Delete First)
+    if (temp != nullptr && temp->data == data) {
+        head = temp->next;
+        delete temp;
+        cout << "Data " << data << " berhasil dihapus.\n";
+        return;
+    }
+
+    // Cari node yang akan dihapus
+    while (temp != nullptr && temp->data != data) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    // Jika data tidak ditemukan
+    if (temp == nullptr) {
+        cout << "Data " << data << " tidak ditemukan!\n";
+        return;
+    }
+
+    // Putuskan tautan: prev melompati temp
+    prev->next = temp->next;
+    delete temp;
+    cout << "Data " << data << " berhasil dihapus.\n";
+}
+
+// ========== UPDATE FUNCTION ==========
+void updateNode(int dataLama, int dataBaru) {
+    Node* temp = head;
+    while (temp != nullptr && temp->data != dataLama) {
+        temp = temp->next;
+    }
+
+    if (temp == nullptr) {
+        cout << "Data " << dataLama << " tidak ditemukan!\n";
+    } else {
+        temp->data = dataBaru;
+        cout << "Data " << dataLama << " berhasil diupdate menjadi " << dataBaru << ".\n";
+    }
+}
+
+// ========== DISPLAY FUNCTION ==========
+void tampilkanList() {
+    if (head == nullptr) {
+        cout << "List kosong!\n";
+        return;
+    }
+
+    Node* temp = head;
+    cout << "Isi Linked List: ";
+    while (temp != nullptr) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL\n";
+}
+
+// ========== MAIN PROGRAM ==========
+int main() {
+    int pilihan, data, target, dataBaru;
+
+    do {
+        cout << "\n=== MENU SINGLE LINKED LIST ===\n";
+        cout << "1. Insert Depan\n";
+        cout << "2. Insert Belakang\n";
+        cout << "3. Insert Setelah\n";
+        cout << "4. Hapus Data\n";
+        cout << "5. Update Data\n";
+        cout << "6. Tampilkan List\n";
+        cout << "0. Keluar\n";
+        cout << "Pilih: ";
+        if (!(cin >> pilihan)) {
+            // Menangani input non-integer
+            cin.clear(); 
+            cin.ignore(10000, '\n');
+            pilihan = -1; // Set pilihan ke nilai default
+        }
+
+        switch (pilihan) {
+            case 1:
+                cout << "Masukkan data: ";
+                cin >> data;
+                insertDepan(data); 
+                break;
+            case 2:
+                cout << "Masukkan data: ";
+                cin >> data;
+                insertBelakang(data);
+                break;
+            case 3:
+                cout << "Masukkan data target: ";
+                cin >> target;
+                cout << "Masukkan data baru: ";
+                cin >> dataBaru;
+                insertSetelah(target, dataBaru);
+                break;
+            case 4:
+                cout << "Masukkan data yang ingin dihapus: ";
+                cin >> data;
+                hapusNode(data);
+                break;
+            case 5:
+                cout << "Masukkan data lama: ";
+                cin >> data;
+                cout << "Masukkan data baru: ";
+                cin >> dataBaru;
+                updateNode(data, dataBaru);
+                break;
+            case 6:
+                tampilkanList();
+                break;
+            case 0:
+                cout << "Program selesai.\n";
+                break;
+            default:
+                cout << "Pilihan tidak valid!\n";
+        }
+    } while (pilihan != 0);
+
+    return 0;
+}
+
+```
+
+
+> Output
+> ![Screenshot bagian x](output3/guide.png)
+> Berikut SS VS Code dari Program Soal No 1
+
+penjelasan: 
+
+Kode ini adalah implementasi dasar dari Abstract Data Type (ADT) Single Linked List dalam C++, di mana semua operasi seperti: Insersi, Deletion, Update, dan Display yang dikelola melalui pointer utama head. Kode ini membangun SLL yang elemennya atau Node terstruktur dengan dua bagian yaitu data nilai integer yang disimpan dan next pointer ke Node berikutnya. Pointer global head berfungsi sebagai First(L), yaitu penunjuk ke Node pertama dalam List.
+
+1. Struktur dan Inisialisasi
+Pada bagian awal, struct Node mendefinisikan bentuk setiap elemen, dan pointer head diinisialisasi ke nullptr, menandakan bahwa List dalam kondisi kosong. Fungsi createNode int data adalah Constructor yang tugasnya mengalokasikan memori baru new Node() untuk Node baru dan mengisi data serta mengatur pointer next Node tersebut ke nullptr sebelum disisipkan.
+
+2. Operasi Penyisipan (Insertion)
+Operasi penyisipan termasuk insertDepan, insertBelakang, insertSetelah adalah yang paling krusial karena ia memanipulasi pointer next untuk menghubungkan Node baru:
+
+insertDepan: Menerapkan logika Insert First (O(1)). Node baru dibuat, pointer next Node baru disetel untuk menunjuk ke head lama, kemudian pointer head digeser untuk menunjuk ke Node baru.
+
+insertBelakang: Menerapkan logika Insert Last (O(N)). Karena ini SLL, fungsi harus melakukan traversal (while (temp->next != nullptr)) dari head hingga Node terakhir (temp) ditemukan. Node baru kemudian disambungkan setelah Node terakhir tersebut.
+
+insertSetelah: Menerapkan logika Insert After (O(1) setelah ditemukan). Fungsi mencari Node target. Setelah ditemukan (temp), Node baru disisipkan di antara temp dan temp->next dengan dua langkah kritis: newNode->next = temp->next; dan temp->next = newNode;.
+
+3. Operasi Penghapusan dan Pembaruan (Deletion & Update)
+hapusNode merupakan prosedur yang menangani penghapusan dengan mencari Node yang akan dihapus (temp) dan Node pendahulunya (prev) secara bersamaan. Logika utamanya dibagi tiga yaitu Hapus Awal (menggeser head), Hapus Tengah/Akhir (menggunakan prev->next = temp->next; untuk melompati temp), dan diakhiri dengan membebaskan memori Node yang dihapus (delete temp).
+
+updateNode merupakan operasi yang paling sederhana di SLL (O(N)). Fungsi hanya perlu melakukan Sequential Search untuk menemukan Node dengan dataLama, dan jika ditemukan, hanya nilai temp->data yang diperbarui menjadi dataBaru, tanpa perlu menyentuh pointer.
+
+4. Tampilan dan Program Utama
+tampilkanList merupakan Fungsi yang melakukan traversal dari head hingga akhir List (while (temp != nullptr)), mencetak nilai setiap Node secara berurutan dan diakhiri dengan penanda NULL.
+
+main() memilik bagian fungsi sebagai Driver program, menampilkan menu, menerima input dari pengguna, dan memanggil fungsi-fungsi SLL di atas berdasarkan pilihan yang diberikan
+
+## Unguided Modul 4
+
+### soal 1
+
+buatlah single linked list untuk Antrian yang menyimpan data pembeli( nama dan pesanan). program memiliki beberapa menu seperti tambah antrian,  layani antrian(hapus), dan tampilkan antrian. \*antrian pertama harus yang pertama dilayani
+   
+
+```go
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Node {
+    string nama;
+    string pesanan;
+    Node* next;
+};
+
+Node* depan = nullptr; 
+Node* belakang = nullptr; 
+
+Node* MNode(string nama, string pesanan) {
+    Node* newNode = new Node();
+    newNode->nama = nama;
+    newNode->pesanan = pesanan;
+    newNode->next = nullptr;
+    return newNode;
+}
+
+void tambahAntrian(string nama, string pesanan) {
+    Node* newNode = MNode(nama, pesanan);
+
+    if (depan == nullptr) {
+        depan = newNode;
+        belakang = newNode;
+    } else {
+        belakang->next = newNode;
+        belakang = newNode;
+    }
+    cout << "\n Antrian berhasil ditambahkan: " << nama << " memesan " << pesanan << ".\n";
+}
+
+void layaniAntrian() {
+    if (depan == nullptr) {
+        cout << "\n Antrian kosong gais! belum ada pembeli yang bisa dilayani.\n";
+        return;
+    }
+
+    Node* nodeDilayani = depan;
+    string namaDilayani = nodeDilayani->nama;
+
+    depan = depan->next;
+
+    if (depan == nullptr) {
+        belakang = nullptr;
+    }
+
+    delete nodeDilayani;
+    
+    cout << "\n Pembeli " << namaDilayani << " telah selesai dilayani.\n";
+}
+
+void tampilkanAntrian() {
+    if (depan == nullptr) {
+        cout << "\nList antrian kosong.\n";
+        return;
+    }
+
+    Node* current = depan;
+    int nomor = 1;
+    cout << "\n=== DAFTAR ANTRIAN PEMBELI ===\n";
+    while (current != nullptr) {
+        cout << nomor << ". Nama: " << current->nama 
+             << ", Pesanan: " << current->pesanan << endl;
+        current = current->next;
+        nomor++;
+    }
+    cout << "==============================\n";
+}
+
+int main() {
+    int pilihan;
+    string namaPembeli, pesananPembeli;
+
+    do {
+        cout << "\n\n=== MENU ANTRIAN ===\n";
+        cout << "1. Tambah Antrian \n";
+        cout << "2. Layani Antrian \n";
+        cout << "3. Tampilkan Antrian\n";
+        cout << "0. Keluar\n";
+        cout << "Pilih: ";
+        if (!(cin >> pilihan)) {
+             cin.clear(); 
+             cin.ignore(10000, '\n');
+             pilihan = -1;
+        }
+
+        switch (pilihan) {
+            case 1:
+                cout << "Masukkan Nama Pembeli: ";
+                cin.ignore(); 
+                getline(cin, namaPembeli);
+                cout << "Masukkan Jenis Pesanan: ";
+                getline(cin, pesananPembeli);
+                tambahAntrian(namaPembeli, pesananPembeli);
+                break;
+            case 2:
+                layaniAntrian();
+                break;
+            case 3:
+                tampilkanAntrian();
+                break;
+            case 0:
+                cout << "Program selesai. Terima kasih.\n";
+                break;
+            default:
+                cout << "Pilihan tidak valid!\n";
+        }
+    } while (pilihan != 0);
+
+    return 0;
+}
+
+
+
+
+```
+
+
+> Output
+> ![Screenshot bagian x](output3/guided.3.png)
+> Berikut SS VS Code dari Program Soal No 1
+
+penjelasan: 
+
+Kode C++ ini adalah demonstrasi fungsional dari implementasi Abstract Data Type (ADT) Queue yang dibangun di atas struktur Single Linked List, menekankan pada prinsip FIFO (First-In, First-Out). Implementasi ini dioptimalkan untuk efisiensi operasional dengan menggunakan dua pointer global, depan dan belakang.
+
+Fungsi tambahAntrian mewakili operasi Insert Last yang dioptimalkan, menjamin kompleksitas waktu O(1). Optimalisasi ini dicapai dengan memanfaatkan pointer belakang untuk menyisipkan Node baru setelah elemen terakhir, tanpa perlu traversal yang mahal (O(N)). Sebaliknya, fungsi layaniAntrian mewakili operasi Delete First, yang juga memiliki kompleksitas O(1), di mana ia memodifikasi pointer depan untuk menunjuk ke Node berikutnya, menjamin bahwa elemen yang pertama masuk adalah yang pertama dihapus.
+
+Struktur utama, struct Node, dirancang untuk menyimpan data komposit yaitu nama dan pesanan, sementara logika di dalam layaniAntrian secara ketat mengurus pemutusan tautan Node yang dilayani dan pembebasan memori delete nodeDilayani, menjaga integritas List dan mencegah memory leak. Hasilnya, program ini berhasil memodelkan sistem antrian yang efisien dan fungsional, memanfaatkan kekuatan manipulasi pointer SLL untuk operasi Insert dan Delete yang cepat.
+
+### soal 2
+buatlah program kode untuk membalik (reverse) singly linked list (1-2-3 menjadi 3-2-1) 
+   
+```go
+#include <iostream>
+
+using namespace std;
+
+struct Node {
+    int data;
+    Node* berikutnya; 
+};
+
+Node* head = nullptr; 
+
+Node* buatNode(int nilaiData) {
+    Node* nodeBaru = new Node();
+    nodeBaru->data = nilaiData;
+    nodeBaru->berikutnya = nullptr;
+    return nodeBaru;
+}
+
+void sisipAkhir(int nilaiData) {
+    Node* nodeBaru = buatNode(nilaiData);
+    if ( head == nullptr) {
+        head = nodeBaru;
+    } else {
+        Node* sementara = head;
+        while (sementara->berikutnya != nullptr) {
+            sementara = sementara->berikutnya;
+        }
+        sementara->berikutnya = nodeBaru;
+    }
+}
+
+void cetakList() {
+    Node* sementara = head;
+    if (sementara == nullptr) {
+        cout << "List kosong.\n";
+        return;
+    }
+    while (sementara != nullptr) {
+        cout << sementara->data;
+        if (sementara->berikutnya != nullptr) {
+            cout << " -> ";
+        }
+        sementara = sementara->berikutnya;
+    }
+    cout << "\n";
+}
+
+void balikList() {
+   
+    Node* sebelum = nullptr;
+    
+    Node* saatIni = head;
+    
+    Node* berikut = nullptr;
+
+    
+    while (saatIni != nullptr) {
+      
+        berikut = saatIni->berikutnya;
+
+        saatIni->berikutnya = sebelum;
+
+        sebelum = saatIni; 
+        saatIni = berikut; 
+    }
+
+    head = sebelum;
+  
+}
+
+
+int main() {
+
+    sisipAkhir(1);
+    sisipAkhir(2);
+    sisipAkhir(3);
+
+
+    cout << "List Awal: ";
+    cetakList(); 
+
+    balikList();
+
+    cout << "List Setelah Dibalik: ";
+    cetakList();
+
+    return 0;
+}
+```
+
+
+> Output
+> ![Screenshot bagian x](output3/guidd1.3.png)
+> Berikut SS VS Code dari Program Soal No 1
+
+penjelasan: 
+
+Kode C++ ini adalah demonstrasi fungsional dari implementasi algoritma Iterative Reversal pada Single Linked List, menekankan pada modifikasi tautan pointer secara langsung untuk membalik urutan List secara permanen. Intinya, fungsi balikList mencapai pembalikan ini dengan memanipulasi tiga pointer yang bergerak secara berkoordinasi. saatIni yaitu Node yang diproses, sebelum yaitu Node yang sudah dibalik dan menjadi destinasi tautan baru, dan berikut yaitu penjaga tautan maju. Dengan mengubah arah saatIni->berikutnya agar menunjuk ke sebelum di setiap langkah, tautan List diputus dan dibalik satu per satu. Hasilnya, List yang semula terurut (1→2→3) berhasil dibalik menjadi urutan terbalik (3→2→1), di mana pointer kepala List baru secara permanen disetel ke Node terakhir dari List lama.
+
+
 ## Referensi
 Lippman, S. B., Lajoie, J., & Moo, B. E. (2012). C++ Primer (5th ed.). Addison-Wesley Professional.
 

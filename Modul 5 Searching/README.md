@@ -235,7 +235,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](output3/gaded4.1.png)
+> ![Screenshot bagian x](output5/Ungaided1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 

@@ -2,8 +2,9 @@
 <p align="center">Raden Aurel Aditya Kusumawaningyun - 103112430267</p>
 
 ## Dasar Teori Modul 5
-LAGIII DIMINTA MODULNYA
+Operasi Pencarian Searching pada Singly Linked List. Dalam konteks struktur data dinamis, Searching merupakan salah satu operasi primitif atau operasi dasar yang esensial pada Linked List. Konsep ini berfokus pada aktivitas menemukan sebuah node tertentu di dalam list. Berbeda dengan Array yang dapat mengakses data secara langsung menggunakan indeks, Linked List harus menggunakan metode pencarian linier. Proses pencarian ini berjalan dengan mengunjungi setiap node secara berurutan, dimulai dari node pertama, dan berhenti seketika node yang dicari ditemukan. Keberhasilan operasi searching ini menjadi fondasi penting yang mempermudah implementasi operasi lanjutan yang lebih kompleks, seperti Insert After, Delete After, atau Update data. Secara konseptual, operasi searching ini adalah bagian dari Abstract Data Type (ADT) dari Linked List, di mana ADT sendiri adalah landasan yang mendefinisikan suatu tipe struktur data beserta serangkaian operasi primitif yang dapat dilakukan terhadapnya
 
+Dalam implementasi praktis C++, struktur data ini memanfaatkan pointer operator-operator. Ketika pencarian dilakukan, sebuah pointer sementara (temp) akan disiapkan untuk memulai dari head dan bergerak maju melalui tautan (temp = temp->next) hingga node terakhir (nullptr), sambil membandingkan nilai info pada node saat ini dengan nilai key yang dicari. Keberadaan semua fungsi dasar searching dan utility lainnya dalam Linked List biasanya diwujudkan melalui pemisahan kode menjadi dua modul: Spesifikasi (.h) yang berisi deklarasi tipe dan prototipe fungsi, dan Realisasi (.c atau .cpp) yang berisi kode program aktual dari primitif tersebut. Pemahaman yang kuat terhadap logika searching ini, yang merupakan salah satu dari berbagai operasi yang dibahas dalam literatur seperti "C++ Primer" atau modul struktur data universitas, sangat krusial untuk menguasai pengelolaan memori dan struktur data dinamis secara keseluruhan.
 ## Guided Modul 5
 
 ### soal 1

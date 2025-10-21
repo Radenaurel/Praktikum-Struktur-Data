@@ -257,6 +257,8 @@ Kesimpulan: Fungsi ini mendemonstrasikan metode pencarian linier pada Linked Lis
 
 ### soal 1
 
+buatlah searcing untuk mencari nama pembeli pada unguided sebelumnya
+
 ```go
 #include <iostream>
 #include <string>
@@ -408,16 +410,292 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](output5/Ungaided1.png)
+> ![Screenshot bagian x](output5/Ungaided.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 
 
-Langkah-Langkah Proses Pencarian
-1. Inisialisasi dan Looping: Pencarian dimulai dengan mengarahkan pointer temp ke head dan memulai perulangan while (temp != nullptr). Perulangan ini memastikan bahwa proses pencarian terus berjalan selama list belum mencapai akhir (nullptr).
+Kode C++ ini merupakan implementasi fungsional dari Abstract Data Type  Queue yang direalisasikan menggunakan struktur Single Linked List atau SLL, di mana prinsip First-In, First-Out (FIFO) diterapkan secara ketat. Intinya, efisiensi operasional sistem antrian ini dicapai melalui penggunaan pointer depan dan belakang. Fungsi tambahAntrian dioptimalkan menjadi O(1) karena menggunakan pointer belakang untuk menyisipkan Node baru tanpa traversal yang lama. Demikian pula, fungsi layaniAntrian adalah operasi Delete First O(1) yang hanya memanipulasi pointer depan untuk memutuskan Node yang pertama masuk. Sementara itu, fungsi cariPembeli mengimplementasikan Sequential Search untuk melintasi List, menjamin fungsionalitas penuh manajemen antrian, di mana semua operasi kritis dilakukan dengan memanipulasi alamat memori secara langsung.
 
-2. Pengecekan dan Modifikasi Flag:
-Di setiap node, program mengecek kondisi if (temp->data == key). Jika kondisi ini benar maka data ditemukan, program mencetak posisi (pos), mengubah flag found menjadi true, dan segera menghentikan perulangan dengan perintah break.
+### soal 2
 
-3. Pergeseran dan Penghitungan: Jika data tidak ditemukan, pointer temp digeser ke node berikutnya melalui temp = temp->next;, dan counter pos ditingkatkan (pos++).
+gunakan latihan pada pertemuan minggun ini dan tambahkan seardhing untuk mencari buku berdasarkan judul, penulis, dan ISBN
+
+```go
+#include <iostream>
+#include <string>
+#include <iomanip> 
+
+using namespace std;
+
+struct DataBuku {
+    string isbn;
+    string judul;
+    string penulis;
+};
+
+struct Node {
+    DataBuku info; 
+    Node* next;    
+};
+
+Node* head = nullptr; 
+
+Node* buatNode(DataBuku data) {
+    Node* P = new Node;
+    if (P != NULL) {
+        P->info = data; 
+        P->next = NULL;
+    }
+    return P;
+}
+
+void hapusMemoriNode(Node* &P) {
+    delete P;
+    P = NULL;
+}
+
+Node* cariBukuByISBN(string isbn) {
+    Node* P = head;
+    while (P != NULL) {
+        if (P->info.isbn == isbn) {
+            return P;
+        }
+        P = P->next;
+    }
+    return NULL;
+}
+
+void tambahBuku(DataBuku data) {
+    Node* P = buatNode(data);
+    if (P == NULL) {
+        cout << "\n[ERROR] Gagal alokasi memori." << endl;
+        return;
+    }
+    
+    if (head == NULL) {
+        head = P;
+    } else {
+        Node* Q = head;
+        while (Q->next != NULL) {
+            Q = Q->next;
+        }
+        Q->next = P;
+    }
+    cout << "\n[INFO] Buku '" << data.judul << "' berhasil ditambahkan." << endl;
+}
+
+void hapusBuku(string isbn) {
+    if (head == NULL) {
+        cout << "\n[ERROR] List kosong." << endl;
+        return;
+    }
+    
+    Node* P = cariBukuByISBN(isbn); 
+
+    if (P == NULL) {
+        cout << "\n[ERROR] Buku dengan ISBN " << isbn << " tidak ditemukan." << endl;
+        return;
+    }
+
+    if (P == head) {
+        head = P->next;
+    } 
+    else {
+        Node* prev = head;
+        while (prev->next != P) {
+            prev = prev->next;
+        }
+        prev->next = P->next; 
+    }
+
+    cout << "\n[INFO] Buku '" << P->info.judul << "' berhasil dihapus." << endl;
+    hapusMemoriNode(P);
+}
+
+void updateBuku(string isbn) {
+    Node* P = cariBukuByISBN(isbn);
+    if (P != NULL) {
+        cout << "\nData Buku Ditemukan: " << P->info.judul << endl;
+        
+        cout << "Masukkan Judul Baru: ";
+        cin.ignore();
+        getline(cin, P->info.judul);
+
+        cout << "Masukkan Penulis Baru: ";
+        getline(cin, P->info.penulis);
+
+        cout << "\n[INFO] Data buku berhasil diperbarui." << endl;
+    } else {
+        cout << "\n[ERROR] Buku dengan ISBN " << isbn << " tidak ditemukan." << endl;
+    }
+}
+
+void lihatBuku() {
+    cout << "\n================ DAFTAR BUKU ================" << endl;
+    if (head == NULL) {
+        cout << "           (Tidak ada buku di daftar)" << endl;
+    } else {
+        Node* P = head;
+        int i = 1;
+        
+        // Header
+        cout << left << setw(5) << "NO" << setw(15) << "ISBN" << setw(40) << "JUDUL" << "PENULIS" << endl;
+        cout << string(80, '-') << endl;
+
+        while (P != NULL) {
+            cout << left << setw(5) << i
+                 << setw(15) << P->info.isbn
+                 << setw(40) << P->info.judul
+                 << P->info.penulis << endl;
+            P = P->next;
+            i++;
+        }
+    }
+    cout << "===========================================" << endl;
+}
+
+void cariDanTampilkanBuku() {
+    if (head == NULL) {
+        cout << "\n[INFO] Daftar buku masih kosong, tidak ada yang bisa dicari." << endl;
+        return;
+    }
+
+    int pilihanCari;
+    cout << "\n--- Cari Buku Berdasarkan ---" << endl;
+    cout << "1. Judul" << endl;
+    cout << "2. Penulis" << endl;
+    cout << "3. ISBN" << endl;
+    cout << "Pilihan Anda: ";
+    cin >> pilihanCari;
+
+    if (cin.fail() || pilihanCari < 1 || pilihanCari > 3) {
+        cin.clear();     
+        cin.ignore(10000, '\n');     
+        cout << "\n[ERROR] Pilihan tidak valid." << endl;
+        return;
+    }
+
+    string keyword;
+    cout << "Masukkan kata kunci pencarian: ";
+    cin.ignore();     
+    getline(cin, keyword);
+
+    Node* P = head;
+    bool ditemukan = false;
+    int i = 1;
+
+    cout << "\n================ HASIL PENCARIAN ================" << endl;
+    cout << left << setw(5) << "NO" << setw(15) << "ISBN" << setw(40) << "JUDUL" << "PENULIS" << endl;
+    cout << string(80, '-') << endl;
+
+    while (P != NULL) {
+        bool cocok = false;
+
+        if (pilihanCari == 1 && P->info.judul.find(keyword) != string::npos) {
+            cocok = true;
+        } 
+        else if (pilihanCari == 2 && P->info.penulis.find(keyword) != string::npos) {
+            cocok = true;
+        } 
+        else if (pilihanCari == 3 && P->info.isbn == keyword) {
+            cocok = true;
+        }
+
+        if (cocok) {
+            cout << left << setw(5) << i
+                 << setw(15) << P->info.isbn
+                 << setw(40) << P->info.judul
+                 << P->info.penulis << endl;
+            ditemukan = true;
+            i++;
+        }
+        P = P->next;
+    }
+
+    if (!ditemukan) {
+        cout << "   (Buku dengan kata kunci '" << keyword << "' tidak ditemukan)" << endl;
+    }
+    cout << "===========================================" << endl;
+}
+
+int main() {
+    int pilihan;
+    string isbn;
+    DataBuku dataBuku;
+
+    do {
+        cout << "\n===== SISTEM MANAJEMEN BUKU =====" << endl;
+        cout << "1. Tambah Buku" << endl;
+        cout << "2. Hapus Buku" << endl;
+        cout << "3. Perbarui Buku" << endl;
+        cout << "4. Lihat Semua Buku" << endl;
+        cout << "5. Cari Buku" << endl;
+        cout << "6. Keluar" << endl;
+        cout << "=================================" << endl;
+        cout << "Pilihan Anda: ";
+        cin >> pilihan;
+        
+        if (cin.fail()) {
+            cout << "\n[ERROR] Input harus berupa angka." << endl;
+            cin.clear();
+            cin.ignore(10000, '\n');    
+            pilihan = 0;    
+            continue;
+        }
+
+        switch (pilihan) {
+            case 1:
+                cout << "\n--- Tambah Buku Baru ---" << endl;
+                cout << "Masukkan ISBN: ";
+                cin >> dataBuku.isbn;
+                cout << "Masukkan Judul: ";
+                cin.ignore();
+                getline(cin, dataBuku.judul);
+                cout << "Masukkan Penulis: ";
+                getline(cin, dataBuku.penulis);
+                tambahBuku(dataBuku);
+                break;
+            case 2:
+                cout << "\n--- Hapus Buku ---" << endl;
+                cout << "Masukkan ISBN buku yang akan dihapus: ";
+                cin >> isbn;
+                hapusBuku(isbn);
+                break;
+            case 3:
+                cout << "\n--- Perbarui Data Buku ---" << endl;
+                cout << "Masukkan ISBN buku yang akan diperbarui: ";
+                cin >> isbn;
+                updateBuku(isbn);
+                break;
+            case 4:
+                lihatBuku();
+                break;
+            case 5:
+                cariDanTampilkanBuku();
+                break;
+            case 6:
+                cout << "\nTerima kasih! Program selesai." << endl;
+                break;
+            default:
+                cout << "\n[ERROR] Pilihan tidak valid. Silakan coba lagi." << endl;
+                break;
+        }
+
+    } while (pilihan != 6);
+
+    return 0;
+}
+```
+
+
+> Output
+> ![Screenshot bagian x](output5/Ungaided5.2.png)
+> Berikut SS VS Code dari Program Soal No 1
+
+penjelasan: 
+
+Kode C++ ini adalah implementasi komprehensif dari Abstract Data Type Katalog Buku menggunakan struktur Single Linked List. Program ini secara efektif mengelola dan memanipulasi data buku secara dinamis di memori, menegaskan konsep Modularitas. Struktur utama program terdiri dari struct DataBuku sebagai Record Type yang menyimpan ISBN, Judul, dan Penulis dan struct Node yang dihubungkan oleh pointer Node* next, dengan pointer global head sebagai penanda awal List. Fungsi buatNode berfungsi sebagai Constructor, mengalokasikan memori Node baru dan mengisi data. Operasi tambahBuku diimplementasikan sebagai Insert Last O(N), menggunakan traversal untuk menyisipkan Node baru di akhir List. Fungsionalitas manajemen List diperkuat oleh fungsi-fungsi manipulasi pointer yang kompleks diantaranya hapusBuku menggunakan pointer prev untuk melompati tautan Node yang ditargetkan dan bisa ditemukan melalui cariBukuByISBN sebelum memori dibebaskan. Sementara itu, fungsi updateBuku dan cariDanTampilkanBuku mengandalkan Sequential Search O(N) untuk menemukan Node berdasarkan kecocokan ISBN, Judul, atau Penulis. Seluruh sistem diakses melalui fungsi main yang bertindak sebagai Driver antarmuka, memungkinkan pengguna untuk melakukan operasi Create, Read, Update, Delete (CRUD) secara interaktif pada katalog buku SLL.
+
+
 

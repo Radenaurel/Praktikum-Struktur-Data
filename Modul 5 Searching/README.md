@@ -410,7 +410,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](output5/Ungaided.png)
+> ![Screenshot bagian x](output5/Ungaided5.1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 

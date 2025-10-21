@@ -5,6 +5,7 @@
 Operasi Pencarian Searching pada Singly Linked List. Dalam konteks struktur data dinamis, Searching merupakan salah satu operasi primitif atau operasi dasar yang esensial pada Linked List. Konsep ini berfokus pada aktivitas menemukan sebuah node tertentu di dalam list. Berbeda dengan Array yang dapat mengakses data secara langsung menggunakan indeks, Linked List harus menggunakan metode pencarian linier. Proses pencarian ini berjalan dengan mengunjungi setiap node secara berurutan, dimulai dari node pertama, dan berhenti seketika node yang dicari ditemukan. Keberhasilan operasi searching ini menjadi fondasi penting yang mempermudah implementasi operasi lanjutan yang lebih kompleks, seperti Insert After, Delete After, atau Update data. Secara konseptual, operasi searching ini adalah bagian dari Abstract Data Type (ADT) dari Linked List, di mana ADT sendiri adalah landasan yang mendefinisikan suatu tipe struktur data beserta serangkaian operasi primitif yang dapat dilakukan terhadapnya
 
 Dalam implementasi praktis C++, struktur data ini memanfaatkan pointer operator-operator. Ketika pencarian dilakukan, sebuah pointer sementara (temp) akan disiapkan untuk memulai dari head dan bergerak maju melalui tautan (temp = temp->next) hingga node terakhir (nullptr), sambil membandingkan nilai info pada node saat ini dengan nilai key yang dicari. Keberadaan semua fungsi dasar searching dan utility lainnya dalam Linked List biasanya diwujudkan melalui pemisahan kode menjadi dua modul: Spesifikasi (.h) yang berisi deklarasi tipe dan prototipe fungsi, dan Realisasi (.c atau .cpp) yang berisi kode program aktual dari primitif tersebut. Pemahaman yang kuat terhadap logika searching ini, yang merupakan salah satu dari berbagai operasi yang dibahas dalam literatur seperti "C++ Primer" atau modul struktur data universitas, sangat krusial untuk menguasai pengelolaan memori dan struktur data dinamis secara keseluruhan.
+
 ## Guided Modul 5
 
 ### soal 1
@@ -251,3 +252,172 @@ Di setiap node, program mengecek kondisi if (temp->data == key). Jika kondisi in
 4. Output Hasil Akhir: Setelah perulangan selesai, program mengecek flag if (!found) (yaitu, jika found masih false). Pengecekan ini menjamin bahwa pesan "data tidak ditemukan" hanya ditampilkan setelah seluruh Linked List dilalui tanpa menemukan nilai yang dicari.
 
 Kesimpulan: Fungsi ini mendemonstrasikan metode pencarian linier pada Linked List. Dengan menggunakan flag found dan pointer temp, program dapat secara efisien mencari data dan membedakan antara keberhasilan (menggunakan break) dan kegagalan pencarian.
+
+## Ungaided Modul 5
+
+### soal 1
+
+```go
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Node {
+    string nama;
+    string pesanan;
+    Node* next;
+};
+
+Node* depan = nullptr; 
+Node* belakang = nullptr; 
+
+Node* createNode(string nama, string pesanan) {
+    Node* newNode = new Node();
+    newNode->nama = nama;
+    newNode->pesanan = pesanan;
+    newNode->next = nullptr;
+    return newNode;
+}
+
+void tambahAntrian(string nama, string pesanan) {
+    Node* newNode = createNode(nama, pesanan);
+
+    if (depan == nullptr) {
+        depan = newNode;
+        belakang = newNode;
+    } else {
+        belakang->next = newNode;
+        belakang = newNode;
+    }
+    cout << "\n Antrian berhasil ditambahkan: " << nama << " memesan " << pesanan << ".\n";
+}
+
+void layaniAntrian() {
+    if (depan == nullptr) {
+        cout << "\n Antrian kosong! Tidak ada pembeli yang bisa dilayani.\n";
+        return;
+    }
+
+    Node* nodeDilayani = depan;
+    string namaDilayani = nodeDilayani->nama;
+
+    depan = depan->next;
+
+    if (depan == nullptr) {
+        belakang = nullptr;
+    }
+
+    delete nodeDilayani;
+    
+    cout << "\n Pembeli " << namaDilayani << " telah selesai dilayani.\n";
+}
+
+void tampilkanAntrian() {
+    if (depan == nullptr) {
+        cout << "\nList antrian kosong.\n";
+        return;
+    }
+
+    Node* current = depan;
+    int nomor = 1;
+    cout << "\n=== DAFTAR ANTRIAN PEMBELI ===\n";
+    while (current != nullptr) {
+        cout << nomor << ". Nama: " << current->nama 
+             << ", Pesanan: " << current->pesanan << endl;
+        current = current->next;
+        nomor++;
+    }
+    cout << "==============================\n";
+}
+
+void cariPembeli(string targetNama) {
+    Node* current = depan;
+    int posisi = 1;
+    bool ditemukan = false;
+
+    while (current != nullptr) {
+        if (current->nama == targetNama) {
+            cout << "\n Pembeli bernama " << targetNama 
+                 << " ditemukan di posisi antrian ke-" << posisi << "." << endl;
+            cout << "   (Memesan: " << current->pesanan << ")" << endl;
+            ditemukan = true;
+            break; 
+        }
+        current = current->next; 
+        posisi++; 
+    }
+
+    if (!ditemukan) {
+        cout << "\n Pembeli bernama " << targetNama << " tidak ditemukan dalam antrian.\n";
+    }
+}
+
+
+int main() {
+    int pilihan;
+    string namaPembeli, pesananPembeli, namaCari;
+
+    do {
+        cout << "\n\n=== MENU ANTRIAN (SLL - FIFO) ===\n";
+        cout << "1. Tambah Antrian \n";
+        cout << "2. Layani Antrian \n";
+        cout << "3. Tampilkan Antrian\n";
+        cout << "4. Cari Pembeli Berdasarkan Nama\n"; 
+        cout << "0. Keluar\n";
+        cout << "Pilih: ";
+        if (!(cin >> pilihan)) {
+             cin.clear(); 
+             cin.ignore(10000, '\n');
+             pilihan = -1;
+        }
+
+        switch (pilihan) {
+            case 1:
+                cout << "Masukkan Nama Pembeli: ";
+                cin.ignore(); 
+                getline(cin, namaPembeli);
+                cout << "Masukkan Jenis Pesanan: ";
+                getline(cin, pesananPembeli);
+                tambahAntrian(namaPembeli, pesananPembeli);
+                break;
+            case 2:
+                layaniAntrian();
+                break;
+            case 3:
+                tampilkanAntrian();
+                break;
+            case 4: 
+                cout << "Masukkan Nama Pembeli yang dicari: ";
+                cin.ignore();
+                getline(cin, namaCari);
+                cariPembeli(namaCari);
+                break;
+            case 0:
+                cout << "Program selesai. Terima kasih.\n";
+                break;
+            default:
+                cout << "Pilihan tidak valid!\n";
+        }
+    } while (pilihan != 0);
+
+    return 0;
+}
+
+```
+
+
+> Output
+> ![Screenshot bagian x](output5/Ungaided1.png)
+> Berikut SS VS Code dari Program Soal No 1
+
+penjelasan: 
+
+Langkah-Langkah Proses Pencarian
+1. Inisialisasi dan Looping: Pencarian dimulai dengan mengarahkan pointer temp ke head dan memulai perulangan while (temp != nullptr). Perulangan ini memastikan bahwa proses pencarian terus berjalan selama list belum mencapai akhir (nullptr).
+
+2. Pengecekan dan Modifikasi Flag:
+Di setiap node, program mengecek kondisi if (temp->data == key). Jika kondisi ini benar maka data ditemukan, program mencetak posisi (pos), mengubah flag found menjadi true, dan segera menghentikan perulangan dengan perintah break.
+
+3. Pergeseran dan Penghitungan: Jika data tidak ditemukan, pointer temp digeser ke node berikutnya melalui temp = temp->next;, dan counter pos ditingkatkan (pos++).
+

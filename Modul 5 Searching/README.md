@@ -1,4 +1,4 @@
-<h1 align="center">Laporan Praktikum Modul 5 <br> ADT & SLL </h1>
+<h1 align="center">Laporan Praktikum Modul 5 <br> SLL Searching </h1>
 <p align="center">Raden Aurel Aditya Kusumawaningyun - 103112430267</p>
 
 ## Dasar Teori Modul 5

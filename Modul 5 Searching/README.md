@@ -2,9 +2,9 @@
 <p align="center">Raden Aurel Aditya Kusumawaningyun - 103112430267</p>
 
 ## Dasar Teori Modul 5
-Operasi Pencarian Searching pada Singly Linked List. Dalam konteks struktur data dinamis, Searching merupakan salah satu operasi primitif atau operasi dasar yang esensial pada Linked List. Konsep ini berfokus pada aktivitas menemukan sebuah node tertentu di dalam list. Berbeda dengan Array yang dapat mengakses data secara langsung menggunakan indeks, Linked List harus menggunakan metode pencarian linier. Proses pencarian ini berjalan dengan mengunjungi setiap node secara berurutan, dimulai dari node pertama, dan berhenti seketika node yang dicari ditemukan. Keberhasilan operasi searching ini menjadi fondasi penting yang mempermudah implementasi operasi lanjutan yang lebih kompleks, seperti Insert After, Delete After, atau Update data. Secara konseptual, operasi searching ini adalah bagian dari Abstract Data Type (ADT) dari Linked List, di mana ADT sendiri adalah landasan yang mendefinisikan suatu tipe struktur data beserta serangkaian operasi primitif yang dapat dilakukan terhadapnya
+Operasi Pencarian Searching pada Singly Linked List. Dalam konteks struktur data dinamis. Searching merupakan salah satu operasi primitif atau operasi dasar yang esensial pada Linked List. Konsep ini berfokus pada aktivitas menemukan sebuah node tertentu di dalam list. Berbeda dengan Array yang dapat mengakses data secara langsung menggunakan indeks, Linked List harus menggunakan metode pencarian linier. Proses pencarian ini berjalan dengan mengunjungi setiap node secara berurutan, dimulai dari node pertama, dan berhenti seketika node yang dicari ditemukan. Keberhasilan operasi searching ini menjadi fondasi penting yang mempermudah implementasi operasi lanjutan yang lebih kompleks, seperti Insert After, Delete After, atau Update data. Secara konseptual, operasi searching ini adalah bagian dari Abstract Data Type (ADT) dari Linked List, di mana ADT sendiri adalah landasan yang mendefinisikan suatu tipe struktur data beserta serangkaian operasi primitif yang dapat dilakukan terhadapnya
 
-Dalam implementasi praktis C++, struktur data ini memanfaatkan pointer operator-operator. Ketika pencarian dilakukan, sebuah pointer sementara (temp) akan disiapkan untuk memulai dari head dan bergerak maju melalui tautan (temp = temp->next) hingga node terakhir (nullptr), sambil membandingkan nilai info pada node saat ini dengan nilai key yang dicari. Keberadaan semua fungsi dasar searching dan utility lainnya dalam Linked List biasanya diwujudkan melalui pemisahan kode menjadi dua modul: Spesifikasi (.h) yang berisi deklarasi tipe dan prototipe fungsi, dan Realisasi (.c atau .cpp) yang berisi kode program aktual dari primitif tersebut. Pemahaman yang kuat terhadap logika searching ini, yang merupakan salah satu dari berbagai operasi yang dibahas dalam literatur seperti "C++ Primer" atau modul struktur data universitas, sangat krusial untuk menguasai pengelolaan memori dan struktur data dinamis secara keseluruhan.
+Dalam implementasi praktis C++, struktur data ini memanfaatkan pointer operator-operator. Ketika pencarian dilakukan, sebuah pointer sementara (temp) akan disiapkan untuk memulai dari head dan bergerak maju melalui tautan (temp = temp->next) hingga node terakhir (nullptr), sambil membandingkan nilai info pada node saat ini dengan nilai key yang dicari. Pemahaman yang kuat terhadap logika searching ini, yang merupakan salah satu dari berbagai operasi yang dibahas dalam literatur seperti "C++ Primer" atau modul struktur data universitas, sangat krusial untuk menguasai pengelolaan memori dan struktur data dinamis secara keseluruhan.
 
 ## Guided Modul 5
 
@@ -697,5 +697,18 @@ penjelasan:
 
 Kode C++ ini adalah implementasi komprehensif dari Abstract Data Type Katalog Buku menggunakan struktur Single Linked List. Program ini secara efektif mengelola dan memanipulasi data buku secara dinamis di memori, menegaskan konsep Modularitas. Struktur utama program terdiri dari struct DataBuku sebagai Record Type yang menyimpan ISBN, Judul, dan Penulis dan struct Node yang dihubungkan oleh pointer Node* next, dengan pointer global head sebagai penanda awal List. Fungsi buatNode berfungsi sebagai Constructor, mengalokasikan memori Node baru dan mengisi data. Operasi tambahBuku diimplementasikan sebagai Insert Last O(N), menggunakan traversal untuk menyisipkan Node baru di akhir List. Fungsionalitas manajemen List diperkuat oleh fungsi-fungsi manipulasi pointer yang kompleks diantaranya hapusBuku menggunakan pointer prev untuk melompati tautan Node yang ditargetkan dan bisa ditemukan melalui cariBukuByISBN sebelum memori dibebaskan. Sementara itu, fungsi updateBuku dan cariDanTampilkanBuku mengandalkan Sequential Search O(N) untuk menemukan Node berdasarkan kecocokan ISBN, Judul, atau Penulis. Seluruh sistem diakses melalui fungsi main yang bertindak sebagai Driver antarmuka, memungkinkan pengguna untuk melakukan operasi Create, Read, Update, Delete (CRUD) secara interaktif pada katalog buku SLL.
 
+## Referensi
 
+Lippman, S. B., Lajoie, J., & Moo, B. E. (2012). C++ Primer (5th ed.). Addison-Wesley Professional.
 
+Stroustrup, B. (1994). The Design and Evolution of C++. Addison-Wesley Publishing Company.
+
+Stroustrup, B. (2013). The C++ Programming Language (4th ed.). Addison-Wesley Professional.
+
+Prof.Mrs. Tejaswini.A. Puranik. (2025). "Performance Analysis of Sorting and Searching Algorithms". International Journal of Innovations & Advancement in Computer Science, 6(11), 368-372. https://www.researchgate.net/publication/394971225_Performance_Analysis_of_Sorting_and_Searching_Algorithms
+
+Telkom University. (n.d.). Modul 5 Single Linked List (Bagian Kedua). Fakultas Informatika.
+
+The C++ Resources Network. (n.d.). C++ Tutorials. Retrieved October 21, 2025, from https://www.cplusplus.com/doc/tutorial/ 
+
+Microsoft. (n.d.). struct (C++). Microsoft Learn. Retrieved October 21, 2025, from https://learn.microsoft.com/en-us/cpp/cpp/struct-cpp 

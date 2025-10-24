@@ -329,6 +329,181 @@ Fungsi program C++ ini adalah untuk mengimplementasikan dan mengelola struktur d
 
 ## Ungaided Modul 6
 
+### soal 1
+
+![Screenshot bagian x](Output6/ungaided6.1.png)
+
+```go
+#include <iostream>
+#include <string>
+#include <cstdlib>
+
+using namespace std;
+
+struct kendaraan {
+    std::string nopol;
+    std::string warna;
+    int thnBuat;
+};
+
+typedef kendaraan infotype;
+typedef struct elmlist* address;
+
+struct elmlist {
+    infotype info;
+    address next;
+    address prev;
+};
+
+struct List {
+    address First;
+    address Last;
+};
+
+void CreateList(List& L) {
+    L.First = nullptr;
+    L.Last = nullptr;
+}
+
+address alokasi(infotype X) {
+    address P = new elmlist;
+    P->info = X;
+    P->next = nullptr;
+    P->prev = nullptr;
+    return P;
+}
+
+void dealokasi(address& P) {
+    delete P;
+    P = nullptr;
+}
+
+address findElm(const List& L, const std::string& nopolTarget) {
+    address P = L.First;
+    while (P != nullptr) {
+        if (P->info.nopol == nopolTarget) {
+            return P;
+        }
+        P = P->next;
+    }
+    return nullptr; 
+}
+
+void insertFirst(List& L, address P) {
+    if (L.First == nullptr) { 
+        L.First = P;
+        L.Last = P;
+    } else { 
+        P->next = L.First; 
+        L.First->prev = P; 
+        L.First = P;
+    }
+}
+
+void printInfo(const List& L) {
+    if (L.First == nullptr) {
+        cout << "LIST KOSONG." << endl;
+        return;
+    }
+    
+    address P = L.Last; 
+    
+    cout << "\nDATA LIST 1" << endl;
+    
+    P = L.First;
+    while (P != nullptr) {
+        cout << "no polisi : " << P->info.nopol << endl;
+        cout << "warna     : " << P->info.warna << endl;
+        cout << "tahun     : " << P->info.thnBuat << endl;
+        P = P->next;
+    }
+}
+
+void inputKendaraan(List& L) {
+    infotype data;
+    
+    cout << "masukkan nomor polisi: ";
+    cin >> data.nopol;
+    
+    if (findElm(L, data.nopol) != nullptr) {
+        cout << "nomor polisi sudah terdaftar" << endl;
+        cin.ignore(10000, '\n'); 
+        return;
+    }
+    
+    cout << "masukkan warna kendaraan: ";
+    cin >> data.warna;
+    
+    cout << "masukkan tahun kendaraan: ";
+    while (!(cin >> data.thnBuat)) {
+        cout << "Input tahun tidak valid. Masukkan angka: ";
+        cin.clear();
+        cin.ignore(10000, '\n');
+    }
+
+    address P = alokasi(data);
+    insertFirst(L, P); 
+
+    cout << "Data berhasil disisipkan di depan." << endl;
+
+    cin.ignore(10000, '\n'); 
+}
+
+int main() {
+    List L;
+    CreateList(L);
+    int pilihan;
+
+    do {
+        cout << "\n===== MENU DLL KENDARAAN =====" << endl;
+        cout << "1. Masukkan Data Kendaraan" << endl;
+        cout << "2. Tampilkan Semua Data" << endl;
+        cout << "0. Keluar" << endl;
+        cout << "Pilih menu: ";
+        
+        if (!(cin >> pilihan)) {
+            cout << "Input tidak valid.\n";
+            cin.clear();
+            cin.ignore(10000, '\n');
+            pilihan = -1;
+            continue;
+        }
+        
+        switch (pilihan) {
+            case 1:
+                inputKendaraan(L);
+                break;
+            case 2:
+                printInfo(L);
+                break;
+            case 0:
+                cout << "Keluar dari program." << endl;
+                break;
+            default:
+                cout << "Pilihan tidak valid." << endl;
+        }
+
+    } while (pilihan != 0);
+    
+    address current = L.First;
+    while (current != nullptr) {
+        address next = current->next;
+        dealokasi(current);
+        current = next;
+    }
+    L.First = L.Last = nullptr;
+    
+    return 0;
+}
+
+```
+
+
+> Output
+> ![Screenshot bagian x](Output6/ungaided6.1.png)
+> Berikut SS VS Code dari Program Soal No 1
+
+penjelasan: 
 
 
 

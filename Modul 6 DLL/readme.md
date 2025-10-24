@@ -12,6 +12,7 @@ Linked list adalah salah satu bentuk struktur data dinamis yang berisi kumpulan 
 Doubly Linked List adalah jenis linked list di mana masing-masing elemennya memiliki dua successor atau pointer. Kedua pointer tersebut adalah: next yang menunjuk pada elemen sesudahnya dan prev yang menunjuk pada elemen sebelumnya. Struktur Doubly Linked List juga menggunakan dua pointer utama pada list, yaitu first menunjuk elemen pertama dan last menunjuk elemen terakhir.
 
 3. Keunggulan Doubly Linked List
+   
 Keuntungan utama Doubly Linked List dibandingkan Singly Linked List adalah kemudahan akses elemen. Programmer dapat melakukan iterasi maju dan mundur, yang memudahkan proses pencarian searching, pembaruan update, dan penelusuran data dari kedua arah.
 
 ## Guided Modul 6
@@ -318,7 +319,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](output5/Ungaided1.png)
+> ![Screenshot bagian x](Output6/guided1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 

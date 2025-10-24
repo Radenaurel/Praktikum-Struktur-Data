@@ -1,10 +1,20 @@
 <h1 align="center">Laporan Praktikum Modul 6 <br> Double Linked List </h1>
 <p align="center">Raden Aurel Aditya Kusumawaningyun - 103112430267</p>
 
-## Dasar Teori Modul 5
+## Dasar Teori Modul 6 
+A. Konsep Dasar Linked List
+1. Definisi dan Struktur Node
 
+Linked list adalah salah satu bentuk struktur data dinamis yang berisi kumpulan data yang tersusun secara sekuensial, saling bersambungan, dan tidak terbatas. Linked list terdiri dari sejumlah node atau simpul yang dihubungkan secara linier dengan bantuan pointer. Struktur dasar dari linked list memungkinkan penggunaan memori yang efisien karena alokasi memori dilakukan secara dinamis sesuai kebutuhan.
 
-## Guided Modul 5
+2. Doubly Linked List
+
+Doubly Linked List adalah jenis linked list di mana masing-masing elemennya memiliki dua successor atau pointer. Kedua pointer tersebut adalah: next yang menunjuk pada elemen sesudahnya dan prev yang menunjuk pada elemen sebelumnya. Struktur Doubly Linked List juga menggunakan dua pointer utama pada list, yaitu first menunjuk elemen pertama dan last menunjuk elemen terakhir.
+
+3. Keunggulan Doubly Linked List
+Keuntungan utama Doubly Linked List dibandingkan Singly Linked List adalah kemudahan akses elemen. Programmer dapat melakukan iterasi maju dan mundur, yang memudahkan proses pencarian searching, pembaruan update, dan penelusuran data dari kedua arah.
+
+## Guided Modul 6
 
 ### soal 1
 
@@ -313,6 +323,17 @@ int main() {
 
 penjelasan: 
 
+Fungsi program C++ ini adalah untuk mengimplementasikan dan mengelola struktur data Double Linked List secara dinamis melalui menu interaktif. Program mendefinisikan struktur Node dengan pointer prev dan next untuk tautan dua arah, serta menggunakan pointer global head dan tail untuk menandai ujung list. Program menyediakan fungsionalitas lengkap untuk manipulasi list, termasuk penyisipan yaitu insertDepan, insertBelakang, insertSetelah, lalu penghapusan yaitu hapusDepan, hapusBelakang, hapusData, pembaruan yaitu updateData, dan penampilan data dari kedua arah yaitu tampilDepan, tampilBelakang. Fungsi main menjalankan menu interaktif yang menggunakan switch-case dan perulangan do-while, memungkinkan pengguna untuk menguji semua operasi list secara berulang hingga memilih opsi 0 maka akan Keluar.
 
 
-## Ungaided Modul 5
+## Ungaided Modul 6
+
+
+
+
+## Daftar Pustaka
+Munir, R. (2016). Algoritma dan Pemrograman dalam Bahasa Pascal, C, dan C++ Edisi Keenam. Bandung: Informatika. Konsep Linked List)
+
+Sari, A. P., Yuflianda, I. A., & Simangunsong, R. M. (2021). Implementasi Doubly Linked List pada Aplikasi Pengolahan Data Penjualan Tiket Bioskop Berbasis C++. Jurnal Komputer dan Aplikasi, 9(1), 164-171. Diakses dari https://jurnal.polmed.ac.id/index.php/komputasi/article/view/2108. 
+
+Guna, L. A. (2022). Implementasi Prosedur dan Fungsi Dalam Bahasa Pemrograman Python. Jurnal Portal Data, 2(1). Diakses melalui https://ejurnal-bpptik.kominfo.go.id/index.php/jpd/article/view/118.

@@ -9,7 +9,7 @@ Linked list adalah salah satu bentuk struktur data dinamis yang berisi kumpulan 
 
 2. Doubly Linked List
 
-Doubly Linked List adalah jenis linked list di mana masing-masing elemennya memiliki dua successor atau pointer. Kedua pointer tersebut adalah: next yang menunjuk pada elemen sesudahnya dan prev yang menunjuk pada elemen sebelumnya. Struktur Doubly Linked List juga menggunakan dua pointer utama pada list, yaitu first menunjuk elemen pertama dan last menunjuk elemen terakhir.
+Doubly Linked List adalah jenis linked list di mana masing-masing elemennya memiliki dua successor atau pointer. Kedua pointer tersebut adalah next yang menunjuk pada elemen sesudahnya dan prev yang menunjuk pada elemen sebelumnya. Struktur Doubly Linked List juga menggunakan dua pointer utama pada list, yaitu first menunjuk elemen pertama dan last menunjuk elemen terakhir.
 
 3. Keunggulan Doubly Linked List
    
@@ -505,7 +505,482 @@ int main() {
 
 penjelasan: 
 
+Fungsi program C++ ini adalah untuk mengimplementasikan dan mengelola struktur data Double Linked List secara dinamis melalui menu interaktif. Program mendefinisikan struktur Node dengan pointer prev dan next untuk tautan dua arah, serta menggunakan pointer global First dan Last untuk menandai ujung list. Logika program dibagi menjadi beberapa fungsi yang terstruktur seperti: inputKendaraan menangani input data baru dari pengguna, melakukan deteksi duplikasi (findElm) berdasarkan nomor polisi, dan menggunakan prosedur insertFirst untuk menambahkan node baru di awal list. Sementara itu, prosedur printInfo bertugas untuk menampilkan semua data kendaraan yang tersimpan. Fungsi main menjalankan menu interaktif yang menggunakan switch-case dan perulangan do-while, memungkinkan pengguna untuk berulang kali mengelola data kendaraan hingga memilih opsi 0 yaitu Keluar.
 
+### soal 2
+
+![Screenshot bagian x](Output6/ungaided6.1.png)
+
+```go
+#include <iostream>
+#include <string>
+#include <cstdlib>
+
+using namespace std;
+
+struct kendaraan {
+    std::string nopol;
+    std::string warna;
+    int thnBuat;
+};
+
+typedef kendaraan infotype;
+typedef struct elmlist* address;
+
+struct elmlist {
+    infotype info;
+    address next;
+    address prev;
+};
+
+struct List {
+    address First;
+    address Last;
+};
+
+void CreateList(List& L) {
+    L.First = nullptr;
+    L.Last = nullptr;
+}
+
+address alokasi(infotype X) {
+    address P = new elmlist;
+    P->info = X;
+    P->next = nullptr;
+    P->prev = nullptr;
+    return P;
+}
+
+void dealokasi(address& P) {
+    delete P;
+    P = nullptr;
+}
+
+address findElm(const List& L, const std::string& nopolTarget) {
+    address P = L.First;
+    while (P != nullptr) {
+        if (P->info.nopol == nopolTarget) {
+            return P;
+        }
+        P = P->next;
+    }
+    return nullptr; 
+}
+
+void insertFirst(List& L, address P) {
+    if (L.First == nullptr) { 
+        L.First = P;
+        L.Last = P;
+    } else { 
+        P->next = L.First; 
+        L.First->prev = P; 
+        L.First = P;
+    }
+}
+
+void printInfo(const List& L) {
+    if (L.First == nullptr) {
+        cout << "LIST KOSONG." << endl;
+        return;
+    }
+    
+    address P = L.Last; 
+    
+    cout << "\nDATA LIST 1" << endl;
+    
+    P = L.First;
+    while (P != nullptr) {
+        cout << "no polisi : " << P->info.nopol << endl;
+        cout << "warna     : " << P->info.warna << endl;
+        cout << "tahun     : " << P->info.thnBuat << endl;
+        P = P->next;
+    }
+}
+
+void inputKendaraan(List& L) {
+    infotype data;
+    
+    cout << "masukkan nomor polisi: ";
+    cin >> data.nopol;
+    
+    if (findElm(L, data.nopol) != nullptr) {
+        cout << "nomor polisi sudah terdaftar" << endl;
+        cin.ignore(10000, '\n'); 
+        return;
+    }
+    
+    cout << "masukkan warna kendaraan: ";
+    cin >> data.warna;
+    
+    cout << "masukkan tahun kendaraan: ";
+    while (!(cin >> data.thnBuat)) {
+        cout << "Input tahun tidak valid. Masukkan angka: ";
+        cin.clear();
+        cin.ignore(10000, '\n');
+    }
+
+    address P = alokasi(data);
+    insertFirst(L, P); 
+
+    cout << "Data berhasil disisipkan di depan." << endl;
+
+    cin.ignore(10000, '\n'); 
+
+}
+
+void cariDanTampilkan(const List& L) {
+    string nopolCari;
+    
+    cout << "Masukkan Nomor Polisi yang dicari : ";
+    cin >> nopolCari;
+    
+    address P = findElm(L, nopolCari);
+    
+    if (P != nullptr) {
+        cout << "Nomor Polisi : " << P->info.nopol << endl;
+        cout << "Warna        : " << P->info.warna << endl;
+        cout << "Tahun        : " << P->info.thnBuat << endl;
+    } else {
+        cout << "Nomor Polisi " << nopolCari << " tidak ditemukan dalam list." << endl;
+    }
+    
+    cin.ignore(10000, '\n');
+}
+
+int main() {
+    List L;
+    CreateList(L);
+    int pilihan;
+
+    do {
+        cout << "\n===== MENU DLL KENDARAAN =====" << endl;
+        cout << "1. Masukkan Data Kendaraan" << endl;
+        cout << "2. Tampilkan Semua Data" << endl;
+        cout << "3. Cari Data Kendaraan" << endl; // Opsi baru
+        cout << "0. Keluar" << endl;
+        cout << "Pilih menu: ";
+        
+        if (!(cin >> pilihan)) {
+            // ... (Penanganan error input) ...
+            cin.clear();
+            cin.ignore(10000, '\n');
+            pilihan = -1;
+            continue;
+        }
+        
+        switch (pilihan) {
+            case 1:
+                inputKendaraan(L);
+                break;
+            case 2:
+                printInfo(L);
+                break;
+            case 3: 
+                cariDanTampilkan(L);
+                break;
+            case 0:
+                cout << "Keluar dari program." << endl;
+                break;
+            default:
+                cout << "Pilihan tidak valid." << endl;
+        }
+
+    } while (pilihan != 0);
+    
+    address current = L.First;
+    while (current != nullptr) {
+        address next = current->next;
+        dealokasi(current);
+        current = next;
+    }
+    L.First = L.Last = nullptr;
+    
+    return 0;
+}
+```
+
+
+> Output
+> ![Screenshot bagian x](Output6/ungaided6.1.png)
+> Berikut SS VS Code dari Program Soal No 2
+
+penjelasan: 
+
+Fungsi program C++ ini adalah untuk mengimplementasikan dan mengelola struktur data Double Linked List kendaraan secara dinamis melalui menu interaktif. Program mendefinisikan struktur Node dengan pointer prev dan next untuk tautan dua arah, serta menggunakan pointer global First dan Last untuk menandai ujung list. Logika program dibagi menjadi beberapa fungsi, di mana inputKendaraan menangani input data baru, melakukan deteksi duplikasi (findElm), dan menggunakan prosedur insertFirst untuk menambahkan node di awal list. Fungsi main menjalankan menu interaktif yang menggunakan switch-case dan perulangan do-while, memungkinkan pengguna untuk berulang kali mengelola data kendaraan seperti : memasukkan, menampilkan, dan mencari hingga memilih opsi 0 yaitu Keluar, yang diikuti dengan pembebasan memori list.
+
+### soal 3
+
+![Screenshot bagian x](Output6/ungaided6.1.png)
+
+```go
+#include <iostream>
+#include <string>
+#include <cstdlib>
+
+using namespace std;
+
+struct kendaraan {
+    std::string nopol;
+    std::string warna;
+    int thnBuat;
+};
+
+typedef kendaraan infotype;
+typedef struct elmlist* address;
+
+struct elmlist {
+    infotype info;
+    address next;
+    address prev;
+};
+
+struct List {
+    address First;
+    address Last;
+};
+
+void CreateList(List& L) {
+    L.First = nullptr;
+    L.Last = nullptr;
+}
+
+address alokasi(infotype X) {
+    address P = new elmlist;
+    P->info = X;
+    P->next = nullptr;
+    P->prev = nullptr;
+    return P;
+}
+
+void dealokasi(address& P) {
+    delete P;
+    P = nullptr;
+}
+
+address findElm(const List& L, const std::string& nopolTarget) {
+    address P = L.First;
+    while (P != nullptr) {
+        if (P->info.nopol == nopolTarget) {
+            return P;
+        }
+        P = P->next;
+    }
+    return nullptr; 
+}
+
+void insertFirst(List& L, address P) {
+    if (L.First == nullptr) { 
+        L.First = P;
+        L.Last = P;
+    } else { 
+        P->next = L.First; 
+        L.First->prev = P; 
+        L.First = P;
+    }
+}
+
+void printInfo(const List& L) {
+    if (L.First == nullptr) {
+        cout << "LIST KOSONG." << endl;
+        return;
+    }
+    
+    address P = L.First;
+    
+    cout << "\nDATA LIST 1" << endl;
+    while (P != nullptr) {
+        cout << "no polisi : " << P->info.nopol << endl;
+        cout << "warna     : " << P->info.warna << endl;
+        cout << "tahun     : " << P->info.thnBuat << endl;
+        P = P->next;
+    }
+}
+
+void deleteFirst(List& L, address& P) {
+    if (L.First == nullptr) {
+        P = nullptr;
+        return;
+    }
+    
+    P = L.First;
+    L.First = L.First->next;
+    
+    if (L.First != nullptr) {
+        L.First->prev = nullptr;
+    } else {
+        L.Last = nullptr;
+    }
+    
+    P->next = nullptr; 
+    P->prev = nullptr;
+}
+
+void deleteLast(List& L, address& P) {
+    if (L.Last == nullptr) {
+        P = nullptr;
+        return;
+    }
+    
+    P = L.Last;
+    L.Last = L.Last->prev;
+    
+    if (L.Last != nullptr) {
+        L.Last->next = nullptr;
+    } else {
+        L.First = nullptr;
+    }
+    
+    P->next = nullptr; 
+    P->prev = nullptr;
+}
+
+void inputKendaraan(List& L) {
+    infotype data;
+    
+    cout << "masukkan nomor polisi: ";
+    cin >> data.nopol;
+    
+    if (findElm(L, data.nopol) != nullptr) {
+        cout << "nomor polisi sudah terdaftar" << endl;
+        cin.ignore(10000, '\n'); 
+        return;
+    }
+    
+    cout << "masukkan warna kendaraan: ";
+    cin >> data.warna;
+    
+    cout << "masukkan tahun kendaraan: ";
+    while (!(cin >> data.thnBuat)) {
+        cout << "Input tahun tidak valid. Masukkan angka: ";
+        cin.clear();
+        cin.ignore(10000, '\n');
+    }
+
+    address P = alokasi(data);
+    insertFirst(L, P); 
+
+    cout << "Data berhasil disisipkan di depan." << endl;
+    cin.ignore(10000, '\n'); 
+}
+
+void cariAndTampilkan(const List& L) {
+    string nopolCari;
+    
+    cout << "Masukkan Nomor Polisi yang dicari : ";
+    cin >> nopolCari;
+    
+    address P = findElm(L, nopolCari);
+    
+    if (P != nullptr) {
+        cout << "Nomor Polisi : " << P->info.nopol << endl;
+        cout << "Warna        : " << P->info.warna << endl;
+        cout << "Tahun        : " << P->info.thnBuat << endl;
+    } else {
+        cout << "Nomor Polisi " << nopolCari << " tidak ditemukan dalam list." << endl;
+    }
+    
+    cin.ignore(10000, '\n');
+}
+
+void deleteData(List& L) {
+    string nopolHapus;
+    
+    cout << "Masukkan Nomor Polisi yang akan dihapus : ";
+    cin >> nopolHapus;
+    
+    address P_hapus = findElm(L, nopolHapus);
+    
+    if (P_hapus == nullptr) {
+        cout << "Data dengan nomor polisi " << nopolHapus << " tidak ditemukan." << endl;
+        return;
+    }
+    
+    address P_dealokasi = nullptr;
+    
+    if (P_hapus == L.First) {
+        deleteFirst(L, P_dealokasi);
+    } 
+    else if (P_hapus == L.Last) {
+        deleteLast(L, P_dealokasi);
+    } 
+    else {
+        P_hapus->prev->next = P_hapus->next;
+        P_hapus->next->prev = P_hapus->prev;
+        P_dealokasi = P_hapus;
+        P_dealokasi->next = nullptr; 
+        P_dealokasi->prev = nullptr; 
+    }
+    
+    cout << "Data dengan nomor polisi " << nopolHapus << " berhasil dihapus." << endl;
+    dealokasi(P_dealokasi);
+    
+    cin.ignore(10000, '\n');
+}
+
+int main() {
+    List L;
+    CreateList(L);
+    int pilihan;
+
+    do {
+        cout << "\n===== MENU DLL KENDARAAN =====" << endl;
+        cout << "1. Masukkan Data Kendaraan" << endl;
+        cout << "2. Tampilkan Semua Data" << endl;
+        cout << "3. Cari Data Kendaraan" << endl; 
+        cout << "4. Hapus Data Kendaraan" << endl; 
+        cout << "0. Keluar" << endl;
+        cout << "Pilih menu: ";
+        
+        if (!(cin >> pilihan)) {
+            cout << "Input tidak valid.\n";
+            cin.clear();
+            cin.ignore(10000, '\n');
+            pilihan = -1;
+            continue;
+        }
+        
+        switch (pilihan) {
+            case 1:
+                inputKendaraan(L);
+                break;
+            case 2:
+                printInfo(L);
+                break;
+            case 3:
+                cariAndTampilkan(L);
+                break;
+            case 4:
+                deleteData(L);
+                break;
+            case 0:
+                cout << "Keluar dari program." << endl;
+                break;
+            default:
+                cout << "Pilihan tidak valid." << endl;
+        }
+
+    } while (pilihan != 0);
+    
+    address current = L.First;
+    while (current != nullptr) {
+        address next = current->next;
+        dealokasi(current);
+        current = next;
+    }
+    L.First = L.Last = nullptr;
+    
+    return 0;
+}
+```
+
+
+> Output
+> ![Screenshot bagian x](Output6/ungaided6.1.png)
+> Berikut SS VS Code dari Program Soal No 3
+
+penjelasan: 
+
+Fungsi program C++ ini adalah untuk mengimplementasikan dan mengelola Double Linked List kendaraan yang lengkap dan interaktif. Program mendefinisikan Node dengan pointer prev dan next untuk tautan dua arah, serta menggunakan pointer global First dan Last untuk menandai ujung list. Logika program dibagi menjadi beberapa fungsi, seperti: inputKendaraan menangani input data baru dengan pemeriksaan duplikasi (findElm) dan menggunakan insertFirst untuk menambahkan node di awal cariDanTampilkan mencari dan menampilkan detail node; dan deleteData menghapus node berdasarkan nomor polisi, dengan memanggil prosedur penghapusan dasar (deleteFirst, deleteLast) sesuai posisi node. Fungsi main menjalankan menu interaktif yang menggunakan switch-case dan perulangan do-while, memungkinkan pengguna untuk mengelola data seperti memasukkan, mencari, menampilkan, dan menghapus hingga memilih opsi 0 yaitu Keluar, yang diikuti dengan pembebasan memori list.
 
 ## Daftar Pustaka
 Munir, R. (2016). Algoritma dan Pemrograman dalam Bahasa Pascal, C, dan C++ Edisi Keenam. Bandung: Informatika. Konsep Linked List)

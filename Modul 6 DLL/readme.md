@@ -331,7 +331,7 @@ Fungsi program C++ ini adalah untuk mengimplementasikan dan mengelola struktur d
 
 ### soal 1
 
-![Screenshot bagian x](Output6/ungaided6.1.png)
+![Screenshot bagian x](Output6/soal1.png)
 
 ```go
 #include <iostream>
@@ -500,7 +500,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](Output6/ungaided6.1.png)
+> ![Screenshot bagian x](Output6/Unguided6.1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 
@@ -509,7 +509,7 @@ Fungsi program C++ ini adalah untuk mengimplementasikan dan mengelola struktur d
 
 ### soal 2
 
-![Screenshot bagian x](Output6/ungaided6.1.png)
+![Screenshot bagian x](Output6/soal2.png)
 
 ```go
 #include <iostream>
@@ -701,7 +701,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](Output6/ungaided6.1.png)
+> ![Screenshot bagian x](Output6/Ungaided6.2.png)
 > Berikut SS VS Code dari Program Soal No 2
 
 penjelasan: 
@@ -710,7 +710,7 @@ Fungsi program C++ ini adalah untuk mengimplementasikan dan mengelola struktur d
 
 ### soal 3
 
-![Screenshot bagian x](Output6/ungaided6.1.png)
+![Screenshot bagian x](Output6/soal3.png)
 
 ```go
 #include <iostream>
@@ -975,7 +975,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](Output6/ungaided6.1.png)
+> ![Screenshot bagian x](Output6/Ungaided6.3.png)
 > Berikut SS VS Code dari Program Soal No 3
 
 penjelasan: 

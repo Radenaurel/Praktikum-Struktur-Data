@@ -97,7 +97,7 @@ int main()
 
 
 > Output
-> ![Screenshot bagian x](Output6/guided1.png)
+> ![Screenshot bagian x](Output7/guided1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 
@@ -109,7 +109,7 @@ Program C++ ini berfungsi untuk mengimplementasikan struktur data Stack mengguna
 
 ### soal 1
 
-> ![Screenshot bagian x](Output6/guided1.png)
+> ![Screenshot bagian x](Output7/soal1G7.png)
 
 ```go
  #include <iostream>
@@ -205,7 +205,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](Output6/guided1.png)
+> ![Screenshot bagian x](Output7/Unguded7.1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 
@@ -214,7 +214,7 @@ Program C++ ini berfungsi untuk mengimplementasikan struktur data Stack mengguna
 
 ### soal 2
 
-> ![Screenshot bagian x](Output6/guided1.png)
+> ![Screenshot bagian x](Output7/soal2g.7.png)
 
 ```go
  #include <iostream>
@@ -368,7 +368,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](Output6/guided1.png)
+> ![Screenshot bagian x](Output7/unguided2.png)
 > Berikut SS VS Code dari Program Soal No 2
 
 penjelasan: 
@@ -377,7 +377,7 @@ Kode C++ ini mendefinisikan implementasi dua struktur data dasar, Stack dan Queu
 
 ### soal 3
 
-> ![Screenshot bagian x](Output6/guided1.png)
+> ![Screenshot bagian x](Output7/soal3G7.png)
 
 ```go
  #include <iostream>
@@ -540,7 +540,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](Output6/guided1.png)
+> ![Screenshot bagian x](Output7/unguided3.png)
 > Berikut SS VS Code dari Program Soal No 3
 
 penjelasan: 
@@ -548,7 +548,7 @@ penjelasan:
 Kode C++ ini mengimplementasikan dua struktur data fundamental, Stack dan Queue, yang keduanya menggunakan array statis berkapasitas 20 untuk menyimpan data bertipe char. Program ini berfokus pada dua operasi utama yaitu pertama, fungsi getInputStream yang bertugas membaca aliran karakter yang diketik pengguna hingga tombol Enter ditekan dan memasukkannya satu per satu ke dalam stack. Karena sifat stack adalah Last-In, First-Out (LIFO), urutan elemen di dalam stack akan menjadi kebalikan dari urutan input pengguna. Kedua, fungsi balikStack yang bertugas membalikkan kembali urutan elemen di dalam stack tersebut; ini dicapai dengan cara memindahkan semua elemen dari stack ke queue temporer, lalu mengembalikannya lagi ke stack. Alur program main secara berurutan mencetak "Hello world!", mengambil input stream dari pengguna, menampilkan isi stack yang terbalik, memanggil fungsi balikStack, dan terakhir menampilkan isi stack yang kini sudah kembali ke urutan aslinya.
 
 # Notes : 
-- untuk di ss nama filen di foto terlampir tidak sesuai dengan yang di laporan, jadi fokusnya ke laporan saja karena sudah sesuai dengan Praktikum yang di kerjakan di kelas & di rumah
+- untuk di ss nama file di foto terlampir tidak sesuai dengan yang di laporan, jadi fokusnya ke laporan saja karena sudah sesuai dengan Praktikum yang di kerjakan di kelas & di rumah
 
 # Daftar Pustaka
 

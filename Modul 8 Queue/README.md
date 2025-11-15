@@ -130,7 +130,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](Output7/guided1.png)
+> ![Screenshot bagian x](Output7/guided7.1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 
@@ -141,7 +141,7 @@ Kode C++ ini mengimplementasikan struktur data Queue menggunakan representasi ta
 
 ### soal 1
 
-> ![Screenshot bagian x](Output7/guided1.png)
+> ![Screenshot bagian x](Output7/soal7.1.png)
 
 ```go
  #include <iostream>
@@ -248,7 +248,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](Output7/guided1.png)
+> ![Screenshot bagian x](Output7/Unguided1.7.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 
@@ -395,8 +395,8 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](Output7/guided1.png)
-> Berikut SS VS Code dari Program Soal No 1
+> ![Screenshot bagian x](Output7/Unguided2.7.png)
+> Berikut SS VS Code dari Program Soal No 2
 
 penjelasan: 
 
@@ -537,8 +537,8 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](Output7/guided1.png)
-> Berikut SS VS Code dari Program Soal No 1
+> ![Screenshot bagian x](Output7/unguided3.7.png)
+> Berikut SS VS Code dari Program Soal No 3
 
 penjelasan: 
 

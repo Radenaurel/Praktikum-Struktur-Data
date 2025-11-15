@@ -257,7 +257,7 @@ Kode C++ ini mengimplementasikan struktur data Queue menggunakan representasi ta
 
 ### soal 2
 
-> ![Screenshot bagian x](Output7/guided1.png)
+> ![Screenshot bagian x](Output7/soal7.2.png)
 
 ```go
  #include <iostream>
@@ -404,7 +404,7 @@ Kode C++ ini mengimplementasikan struktur data Queue menggunakan representasi ta
 
 ### soal 3
 
-> ![Screenshot bagian x](Output7/guided1.png)
+> ![Screenshot bagian x](Output7/soal7.3.png)
 
 ```go
 #include <iostream>

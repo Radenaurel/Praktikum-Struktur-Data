@@ -17,7 +17,7 @@ Terdapat dua operasi utama dalam Stack: Push atau penyisipan dan Pop atau pengam
 Implementasi Stack harus dilengkapi dengan beberapa fungsi primitif untuk memastikan manajemen Stack berjalan dengan benar, termasuk createStack() untuk inisialisasi, isEmpty() untuk pengecekan status, dan fungsi pencarian. Perbedaan utama antara representasi pointer dan tabel terletak pada manajemen memori; representasi pointer memerlukan alokasi dan dealokasi memori, sedangkan representasi tabel tidak memerlukannya karena menggunakan array berindeks yang ukurannya sudah terbatas. Struktur data Stack sering diaplikasikan dalam komputasi, salah satunya untuk pemrosesan ekspresi matematika (infix ke postfix atau prefix) dan manajemen memori panggilan fungsi (call stack).
 
 
-## Guided Modul 6
+## Guided Modul 7
 
 ### soal 1
 
@@ -105,7 +105,7 @@ penjelasan:
 Program C++ ini berfungsi untuk mengimplementasikan struktur data Stack menggunakan representasi Linked List dan menguji operasi dasar Last In First Out (LIFO). Program mendefinisikan struktur Node dengan pointer next dan menggunakan pointer top untuk menandai elemen teratas tumpukan. Logika utamanya terletak pada dua operasi primitif: push, yang menyisipkan elemen baru selalu di posisi top, dan pop, yang mengambil dan menghapus elemen dari posisi top. Fungsi show digunakan untuk menampilkan seluruh isi Stack dimulai dari TOP, sementara fungsi isEmpty memastikan operasi tidak dilakukan pada Stack kosong. Fungsi main menguji operasi ini secara berurutan: menyisipkan elemen 30, 20, 10, menampilkan Stack, dan menghapus satu elemen teratas.
 
 
-## Unguided Modul 6
+## Unguided Modul 7
 
 ### soal 1
 

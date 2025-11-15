@@ -544,3 +544,13 @@ penjelasan:
 
 Kode C++ ini mengimplementasikan struktur data Queue menggunakan representasi tabel dengan ukuran tetap MAX = 5. Implementasi ini secara spesifik mengikuti metode Alternatif 3 (Circular Queue), di mana penanda head dan tail "berputar" mengelilingi array. Metode ini adalah yang paling efisien karena menghilangkan semua operasi pergeseran array yang ada pada alternatif-alternatif sebelumnya. Alih-alih menggeser elemen, operasi enqueue dan dequeue hanya memanipulasi penanda head dan tail menggunakan operator modulo (%). Saat enqueue, tail dimajukan dengan rumus Q.tail = (Q.tail + 1) % MAX;, yang secara otomatis membuatnya "berputar" dari indeks 4 (akhir array) kembali ke 0. Demikian pula, saat dequeue, head dimajukan dengan rumus Q.head = (Q.head + 1) % MAX;. Konsekuensi dari ini adalah kondisi isFullQueue berubah menjadi (Q.tail + 1) % MAX == Q.head, dan fungsi printInfo juga harus menggunakan looping khusus yang "melingkar" (dari head ke tail menggunakan modulo) untuk mencetak data dengan urutan yang benar. Fungsi main kemudian mendemonstrasikan alur antrean yang sangat efisien ini.
 
+# Daftar Pustaka
+Adijaya, F., & Setyawan, N. (2019). Implementasi metode antrian (queue) pada sistem antrian online berbasis web (studi kasus: UPTD Puskesmas Sananwetan). Jurnal Repositor, 1(3), 85–92. https://doi.org/10.29303/jr.v1i3.22
+
+Ginting, G. (2018). Analisis perbandingan algoritma circular queue dan priority queue. Jurnal Ilmiah Core IT: Community of Researches and Education of Information Technology, 6(2). https://doi.org/10.26075/coreit.v6i2.812
+
+Kurniawan, H., & Suanto, S. (2017). A performance comparison between the linear queue and the circular queue in Web Servers. Proceedings of the 2017 International Conference on Information Management and Technology (ICIMTech), 178–182. https://doi.org/10.1109/ICIMTech.2017.8273531
+
+Main, M. (2011). Data structures and other objects using Java (4th ed.). Addison-Wesley.
+
+Mishra, R. K., & Singh, R. (2015). Research paper on queues. International Journal of Innovative Research in Technology (IJIRT), 1(8), 65-68.

@@ -402,3 +402,13 @@ int main() {
 penjelasan: 
 
 Program ini menyelesaikan persoalan nomor 3 dengan mengimplementasikan dua prosedur traversal tambahan, yaitu PreOrder dan PostOrder. Untuk mereplikasi struktur pohon yang sesuai dengan Ilustrasi Tree, fungsi utama dikonfigurasi untuk memasukkan data dengan urutan spesifik (6, 4, 7, 2, 5, 1, dan 3) agar terbentuk topologi pohon dengan root bernilai 6 . Prosedur PreOrder bekerja secara rekursif dengan mencetak simpul akar terlebih dahulu sebelum menelusuri sub-pohon kiri dan kanan, menghasilkan urutan output 6-4-2-1-3-5-7 . Sebaliknya, prosedur PostOrder menelusuri cabang kiri dan kanan hingga selesai baru kemudian mencetak simpul akar, yang menghasilkan urutan output 1-3-2-5-4-7-6 . Implementasi ini melengkapi metode InOrder sebelumnya, memberikan gambaran utuh mengenai berbagai strategi penelusuran data dalam struktur Binary Search Tree.
+
+# Daftar Pustaka
+
+Laboratorium Informatika. (2025). Modul 10: Tree (Bagian Pertama). Fakultas Informatika, Telkom University. 
+
+Lipschutz, S. (2014). Data Structures with C (Schaum’s Outline Series). McGraw-Hill Education.
+
+Djayusman, D., Suhartini, I., Gunawan, F. N., & Alhakim, N. T. (2021). Implementasi struktur data tree pada game snake dengan C. Jurnal Digit: Digital of Information Technology, 11(1), 1–10. https://jurnaldigit.org/index.php/DIGIT/article/view/176
+
+Lutfina, E., Inayati, N., & Saraswati, G. W. (2022). Analisis perbandingan kinerja metode rekursif dan metode iteratif dalam algoritma linear search. Komputika: Jurnal Sistem Komputer, 11(2), 143–150. https://doi.org/10.34010/komputika.v11i2.5493

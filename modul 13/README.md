@@ -131,7 +131,7 @@ int main()
 
 
 > Output
-> ![Screenshot bagian x](Input10/guided.10.png)
+> ![Screenshot bagian x](Output13/Guided13.1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 
@@ -261,7 +261,7 @@ int main()
 
 
 > Output
-> ![Screenshot bagian x](Input10/guided.10.png)
+> ![Screenshot bagian x](Output13/Unguided13.1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 
@@ -450,7 +450,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](Input10/guided.10.png)
+> ![Screenshot bagian x](Output13/Unguided13.2.png)
 > Berikut SS VS Code dari Program Soal No 2
 
 penjelasan: 

@@ -455,3 +455,15 @@ int main() {
 
 penjelasan: 
 Program ini adalah implementasi struktur data Circular Singly Linked List untuk mengelola data kemahasiswaan. Struktur data utama dibentuk menggunakan struct Element yang menyimpan tipe data bentukan infotype berisi Nama, NIM, Jenis Kelamin, dan IPK, serta pointer next yang menghubungkan antar elemen . Berbeda dengan linked list biasa, pointer next pada elemen terakhir dalam struktur ini tidak menunjuk ke NULL, melainkan kembali menunjuk ke elemen pertama, menciptakan siklus tertutup. Fitur utama program ini mencakup operasi penyisipan data di berbagai posisi insertFirst, insertLast serta penyisipan spesifik menggunakan insertAfter yang didahului dengan pencarian elemen referensi menggunakan fungsi findElm berdasarkan NIM. Dalam fungsi utama, program mensimulasikan skenario penyisipan data mahasiswa secara bertahap—mulai dari penyisipan awal (Danu, Ali), penyisipan di akhir (Fahmi, Bobi, Gita), hingga penyisipan di tengah (Cindi, Hilmi, Eli) berdasarkan referensi NIM tertentu—yang pada akhirnya menghasilkan daftar mahasiswa yang terurut secara sirkular sesuai dengan spesifikasi soal latihan.
+
+## Daftar Pustaka
+
+Laboratorium Informatika. (2025). Modul 13: Multi Linked List. Fakultas Informatika, Telkom University.
+
+Lipschutz, S. (2014). Data Structures with C (Schaum’s Outline Series). McGraw-Hill Education.
+
+Frieyadie. (2016). Penerapan struktur data senarai berantai ganda (doubly linked list) untuk pembuatan sistem informasi rekam medis. Jurnal TECHNO Nusa Mandiri, 13(2), 108–114. https://doi.org/10.33480/techno.v13i2.152
+
+Kurniawan, H., & Suanto, S. (2017). A performance comparison between the linear queue and the circular queue in web servers. Proceedings of the 2017 International Conference on Information Management and Technology (ICIMTech), 178–182. https://doi.org/10.1109/ICIMTech.2017.8273531
+
+Nurdin, A., & Setiawan, I. (2020). Implementasi struktur data linked list pada sistem antrian pelayanan pelanggan. Jurnal Algoritma, 17(2), 154–160. https://jurnal.itg.ac.id/index.php/algoritma/article/view/728

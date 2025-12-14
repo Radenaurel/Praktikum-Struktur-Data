@@ -217,7 +217,7 @@ int main()
 
 
 > Output
-> ![Screenshot bagian x](Output13/Guided13.1.png)
+> ![Screenshot bagian x](Output14/Guided1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 
@@ -375,7 +375,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](Output13/Unguided13.1.png)
+> ![Screenshot bagian x](Output14/Unguided14.1.png)
 > Berikut SS VS Code dari Program Soal No 1
 
 penjelasan: 
@@ -561,7 +561,7 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](Output13/Unguided13.1.png)
+> ![Screenshot bagian x](Output14/Unguided14.2.png)
 > Berikut SS VS Code dari Program Soal No 2
 
 penjelasan: 
@@ -755,8 +755,19 @@ int main() {
 
 
 > Output
-> ![Screenshot bagian x](Output13/Unguided13.1.png)
+> ![Screenshot bagian x](Output14/Unguided14.3.png)
 > Berikut SS VS Code dari Program Soal No 3
 
 penjelasan: 
 Program ini mengimplementasikan struktur data Undirected Graph atau sering disebut Graph Tak Berarah menggunakan bahasa C++ dengan representasi memori Adjacency List. Struktur dasar dibentuk melalui dua struct utama, yaitu ElmNode sebagai simpul yang memiliki atribut visited untuk penandaan traversal dan pointer firstEdge untuk menunjuk ke senarai sisi, serta ElmEdge sebagai elemen penghubung yang menyimpan alamat simpul tujuan. Mekanisme manipulasi data mencakup fungsi InsertNode yang menambahkan simpul baru ke akhir senarai utama guna menjaga urutan input, sedangkan relasi antar simpul dibangun oleh prosedur ConnectNode yang menciptakan hubungan timbal balik dengan menyisipkan sisi baru ke awal daftar tetangga pada kedua simpul yang terlibat. Visualisasi dan penelusuran graf difasilitasi oleh dua algoritma pencarian utama yaitu prosedur PrintDFS menerapkan metode rekursif untuk melakukan penelusuran mendalam (DFS), sedangkan prosedur PrintBFS memanfaatkan struktur data Queue dari pustaka standar untuk melakukan penelusuran melebar (BFS) secara iteratif, di mana kedua proses tersebut didahului oleh fungsi ResetVisited untuk memastikan status kunjungan simpul kembali ke kondisi awal.
+
+### Daftar Pustaka
+Laboratorium Informatika. (2025). Modul 14: Graph. Fakultas Informatika, Telkom University.
+
+Nugraha, D. W. (2021). Analisis perbandingan kompleksitas algoritma Breadth First Search (BFS) dan Depth First Search (DFS) pada kasus maze solving. Jurnal RESTI (Rekayasa Sistem dan Teknologi Informasi), 5(2), 234-242. https://doi.org/10.29207/resti.v5i2.234
+
+Tarjan, R. (1972). Depth-first search and linear graph algorithms. SIAM Journal on Computing, 1(2), 146-160. https://doi.org/10.1137/0201010
+
+Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). Introduction to Algorithms (3rd ed.). MIT Press.
+
+Rosen, K. H. (2019). Discrete Mathematics and Its Applications (8th ed.). McGraw-Hill Education.

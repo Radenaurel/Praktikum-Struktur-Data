@@ -1,6 +1,6 @@
 <h1 align="center">Laporan Praktikum 
   
-  Modul 10 <br> MULTI LINKED LIST </h1>
+  Modul 13 <br> MULTI LINKED LIST </h1>
 <p align="center">Raden Aurel Aditya Kusumawaningyun - 103112430267</p>
 
 ## Dasar Teori Modul 13

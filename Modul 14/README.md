@@ -3,7 +3,7 @@
   Modul 14 <br> GRAPH </h1>
 <p align="center">Raden Aurel Aditya Kusumawaningyun - 103112430267</p>
 
-## Dasar Teori Modul 13
+## Dasar Teori Modul 14
 A. Konsep Dasar GRAPH
 
 Graph adalah struktur data non-linier yang merepresentasikan hubungan antar objek, terdiri dari himpunan tidak kosong atau sering di sebut node dan garis penghubung juga sering di sebut edge, yang secara formal dinotasikan sebagai G(V, E). Berdasarkan orientasi arah pada sisinya, graph diklasifikasikan menjadi Directed Graph atau graph berarah di mana hubungan memiliki tujuan spesifik, dan Undirected Graph atau juga graph tidak berarah di mana hubungan bersifat timbal balik. Selain arah, konsep fundamental lainnya meliputi weighted graph atau graph berbobot untuk merepresentasikan nilai seperti jarak, serta adjacency (ketetanggaan) yang menandakan hubungan langsung antara dua node melalui sebuah edge.Dalam implementasi pemrograman, graph umumnya direpresentasikan menggunakan Matriks Ketetanggaan atau Multi Linked List, di mana penggunaan Linked List lebih diutamakan dalam modul ini karena sifatnya yang dinamis dan efisien memori. Untuk memproses data di dalamnya, digunakan metode penelusuran traversal utama yaitu Breadth First Search (BFS) yang menelusuri graph secara melebar menggunakan struktur Queue, dan Depth First Search (DFS) yang menelusuri secara mendalam menggunakan struktur Stack. Pemahaman tentang representasi dan algoritma penelusuran ini menjadi dasar untuk aplikasi lanjutan seperti pencarian jalur terpendek atau Topological Sort.
